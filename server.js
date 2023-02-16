@@ -9,9 +9,12 @@ const flash = require('flash')
 const logger = require('morgan')
 const connectDB= require('./config/database')
 
+require('dotenv').config({path: './config/.env'})
 
+// Passport config
+require('./config/passport')
 
-
+connectDB()
 
 
 
@@ -40,6 +43,6 @@ const connectDB= require('./config/database')
 
 
 //port
-app.listen( Port, () => {
+app.listen(process.env.Port, () => {
     console.log('App is on the run, better catch it!')
 })
