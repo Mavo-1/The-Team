@@ -1,8 +1,12 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const connectDB = require('./config/database')
+const { connect } = require('http2')
 
 //Load config
 dotenv.config({path:'./config/.env'})
+
+connectDB()
 
 
 const app = express()
