@@ -20,6 +20,10 @@ if(process.env.NODE_ENV === 'development'){
 
 app.set('view engine', 'ejs')
 
+//Routes
+app.use('/', require('./routes/index'))
+
+
 //port
 const PORT = process.env.PORT || 3000
 
