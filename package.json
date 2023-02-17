@@ -10,6 +10,7 @@
   "author": "Alex Garcia",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.13",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
@@ -22,6 +23,7 @@
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
+    "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7"
   },
   "devDependencies": {

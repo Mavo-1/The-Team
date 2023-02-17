@@ -1,8 +1,9 @@
 const path = require('path')
 const express = require('express')
+const app = express()
 const dotenv = require('dotenv')
 const connectDB = require('./config/database')
-const morgan = require('morgan')
+const logger = require('morgan')
 
 
 //Load config
@@ -10,19 +11,24 @@ dotenv.config({path:'./config/.env'})
 
 connectDB()
 
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(logger('dev'))
 
-const app = express()
 
 if(process.env.NODE_ENV === 'development'){
-    app.use(morgan('dev'))
+    app.use(logger('dev'))
 }
 
 
 
 app.set('view engine', 'ejs')
 
+
 //Statis folder
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname,'/public')))
 
 //Routes
 app.use('/', require('./routes/index'))
