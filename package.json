@@ -1,20 +1,29 @@
 {
+  "name": "final-score",
+  "version": "1.0.0",
+  "description": "This is an app Im working on to help places like the YMCA with rostering their youth sports teams. At the moment, a majority of YMCA's are using the help of excel to manage teams. Although excel is an amazing tool, you run into a lot of complications when you use it for the sole purpose of managing rosters and team details.",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app",
+    "dev": "cross-env NODE_ENV=development nodemon app"
+  },
+  "author": "Alex Garcia",
+  "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
-    "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "express-flash": "^0.0.2",
+    "express-handlebars": "^6.0.7",
     "express-session": "^1.17.3",
-    "mongodb": "^5.0.1",
-    "mongoose": "^6.9.1",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.9.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "validator": "^13.9.0"
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.20"
   }
 }
