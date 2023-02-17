@@ -2,12 +2,14 @@ const express = require('express')
 const dotenv = require('dotenv')
 
 //Load config
-dotenv.config({path: './config/.env'})
+dotenv.config({path:'./config/.env'})
 
 
 const app = express()
 
 //port
-app.listen(process.env.Port, () => {
-    console.log('App is on the run, better catch it!')
-})
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, 
+    console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}. `)
+)
