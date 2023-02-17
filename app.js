@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const dotenv = require('dotenv')
 const connectDB = require('./config/database')
@@ -19,6 +20,9 @@ if(process.env.NODE_ENV === 'development'){
 
 
 app.set('view engine', 'ejs')
+
+//Statis folder
+app.use(express.static(path.join(__dirname,'public')))
 
 //Routes
 app.use('/', require('./routes/index'))
