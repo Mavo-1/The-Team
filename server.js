@@ -16,6 +16,8 @@ require('./config/passport')
 
 connectDB()
 
+app.set('view engine', 'ejs')
+
 
 
 
