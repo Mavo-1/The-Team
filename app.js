@@ -31,7 +31,7 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname,'/public')))
 
 //Routes
-app.use('/', require('./routes/index'))
+app.use('/', require('./routes/login'))
 
 
 //port
