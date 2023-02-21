@@ -4,6 +4,7 @@ const app = express()
 const dotenv = require('dotenv')
 const connectDB = require('./config/database')
 const logger = require('morgan')
+const mainRoutes= require('./routes/main')
 
 
 //Load config
@@ -31,7 +32,8 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname,'/public')))
 
 //Routes
-app.use('/', require('./routes/login'))
+app.use('/', mainRoutes)
+
 
 
 //port
@@ -40,3 +42,4 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, 
     console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}. `)
 )
+

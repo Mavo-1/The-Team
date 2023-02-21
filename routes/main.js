@@ -5,7 +5,7 @@ const router = express.Router()
 //@route Get /
 
 router.get('/',(req,res) => {
-    res.render('login')
+    res.render('index')
 })
 
 
