@@ -47,3 +47,12 @@ exports.logout = (req,res) => {
     })
 }
 
+ exports.getSignup= (req,res)=>{
+   if(req.user){
+    res.redirect('/home')
+   }else {
+    res.render('signup',{
+      title: 'Create Account'
+    })
+   }
+ }
