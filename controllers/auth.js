@@ -56,3 +56,7 @@ exports.logout = (req,res) => {
     })
    }
  }
+
+ exports.postSignup= (req,res) => {
+
+ }
