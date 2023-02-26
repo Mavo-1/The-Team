@@ -78,8 +78,9 @@ exports.logout = (req,res) => {
   {
     "errors": [
       {
-        "location": "body",
+        "location": "body", 
         "msg": "Invalid",
+       "msg": "Invalid value",
         "param": "username"
       }
     ]
