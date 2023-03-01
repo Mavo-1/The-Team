@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
+const passport = require('passport')
 const dotenv = require('dotenv')
 const connectDB = require('./config/database')
 const logger = require('morgan')
@@ -9,6 +11,9 @@ const mainRoutes= require('./routes/main')
 
 //Load config
 dotenv.config({path:'./config/.env'})
+
+//Passport config
+require('./config/passport')(passport)
 
 connectDB()
 
@@ -19,17 +24,17 @@ app.use(express.json())
 app.use(logger('dev'))
 
 
-if(process.env.NODE_ENV === 'development'){
-    app.use(logger('dev'))
-}
+
 
 
 
 app.set('view engine', 'ejs')
 
 
-//Statis folder
+//Static folder
 app.use(express.static(path.join(__dirname,'/public')))
+
+
 
 //Routes
 app.use('/', mainRoutes)
