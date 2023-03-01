@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname,'/public')))
 //Routes
 app.use('/', mainRoutes)
 app.use('/login',mainRoutes)
+app.use('/signup',mainRoutes)
 
 
 
