@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 const connectDB = require('./config/database')
 const logger = require('morgan')
 const mainRoutes= require('./routes/main')
-
+const authRoutes = require('./routes/auth')
 
 //Load config
 dotenv.config({path:'./config/.env'})
@@ -46,6 +46,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/login',mainRoutes)
 app.use('/signup',mainRoutes)
+app.use('/google',authRoutes)
 
 
 
