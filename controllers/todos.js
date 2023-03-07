@@ -1,5 +1,5 @@
 const Todo = require('../models/Todo')
-
+//change from todo to something that fits the project
 module.exports = {
     getTodos: async (req,res)=>{
         console.log(req.user)
