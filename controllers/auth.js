@@ -4,7 +4,7 @@ const User = require('../models/User')
 
 exports.getLogin = (req,res) => {
     if(req.user){
-        return res.redirect('/index')
+        return res.redirect('/home')//changed to home instead of index... testing
     }
     res.render('login', {
         title: 'Login'
@@ -49,7 +49,7 @@ exports.logout = (req,res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/todos')
+    return res.redirect('/home') //changed to home from todos and testing
   }
   res.render('signup', {
     title: 'Create Account'
