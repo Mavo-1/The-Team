@@ -46,6 +46,7 @@ app.use(flash())
 //Routes
 app.use('/', mainRoutes)
 app.use('/todos',todoRoutes)
+app.use('/practices',practiceRoutes)
 
 
 
