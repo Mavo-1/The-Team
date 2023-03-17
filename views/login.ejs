@@ -1,3 +1,4 @@
+<!-- testing login page worked, now need to figure out how to make new login page work -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +14,10 @@
 <div class="animated bounceInDown">
   <div class="container">
     <span class="error animated tada" id="msg"></span>
-    <form name="form1" class="box" onsubmit="return checkStuff()">
+    <form name="form1" class="box" action="/login" method="POST">
       <h4>Final<span>Score</span></h4>
       <h5>Sign in to your account.</h5>
-        <input type="text" name="email" placeholder="Email" autocomplete="off">
+        <input type="email" name="email" placeholder="Email" autocomplete="on">
         <i class="typcn typcn-eye" id="eye"></i>
         <input type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off">
         <label>

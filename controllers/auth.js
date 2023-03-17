@@ -31,7 +31,7 @@ exports.postLogin = (req, res, next) => {
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || '/home')
       })
     })(req, res, next)
   }
@@ -49,7 +49,7 @@ exports.logout = (req,res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/home') //changed to home from todos and testing
+    return res.redirect('/todos') //changed to home from todos and testing
   }
   res.render('signup', {
     title: 'Create Account'
