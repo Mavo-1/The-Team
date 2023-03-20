@@ -48,7 +48,7 @@ app.use('/', mainRoutes)
 app.use('/todos',todoRoutes)
 app.use('/practices',practiceRoutes)
 app.use('schedules',scheduleRoutes)
-
+app.use('/teams',teamRoutes)
 
 
 
