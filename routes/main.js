@@ -4,7 +4,7 @@ const homeController = require('../controllers/home')
 const authController = require('../controllers/auth')
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-
+// requests come in from client and responds with controller
 router.get('/', homeController.getIndex)
 router.get('/login', authController.getLogin)
 router.post('/login',authController.postLogin)
