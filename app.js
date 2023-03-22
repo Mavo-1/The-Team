@@ -8,8 +8,9 @@ const flash = require('express-flash')
 const dotenv = require('dotenv')
 const connectDB = require('./config/database')
 const logger = require('morgan')
-const mainRoutes= require('./routes/main')
+const homeRoutes= require('./routes/home')
 const todoRoutes = require('./routes/todos')
+const mainRoutes = require('./routes/main')
 
 
 //Load config
@@ -44,11 +45,10 @@ app.use(passport.session())
 app.use(flash())
 
 //Routes
-app.use('/', mainRoutes)
+app.use('/', homeRoutes)
 app.use('/todos',todoRoutes)
-//app.use('/practices',practiceRoutes)
-//app.use('schedules',scheduleRoutes)
-//app.use('/teams',teamRoutes)
+//app.use('/main',mainRoutes)
+
 
 
 
