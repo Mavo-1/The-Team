@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 const connectDB = require('./config/database')
 const logger = require('morgan')
 const homeRoutes= require('./routes/home')
-const todoRoutes = require('./routes/todos')
+//const todoRoutes = require('./routes/todos')
 const mainRoutes = require('./routes/main')
 
 
@@ -46,8 +46,8 @@ app.use(flash())
 
 //Routes
 app.use('/', homeRoutes)
-app.use('/todos',todoRoutes)
-//app.use('/main',mainRoutes)
+//app.use('/todos',todoRoutes)
+app.use('/main',mainRoutes)
 
 
 
