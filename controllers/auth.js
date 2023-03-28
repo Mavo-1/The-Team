@@ -49,7 +49,7 @@ exports.logout = (req,res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/todos') //changed to home from todos and testing
+    return res.redirect('/main') //changed to home from todos and testing
   }
   res.render('signup', {
     title: 'Create Account'
@@ -89,7 +89,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err)
         }
-        res.redirect('/todos')
+        res.redirect('/main')
       })
     })
   })
