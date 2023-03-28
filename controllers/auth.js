@@ -49,7 +49,7 @@ exports.logout = (req,res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/main') //changed to home from todos and testing
+    return res.redirect('/main') //
   }
   res.render('signup', {
     title: 'Create Account'
