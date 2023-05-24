@@ -1,7 +1,6 @@
-
 exports.getMain = (req,res) => {
     if(req.user){
-        res.render('main.html')
+        res.render('/main')
     }
    
 }
