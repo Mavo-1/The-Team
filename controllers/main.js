@@ -1,6 +1,6 @@
 exports.getMain = (req,res) => {
     if(req.user){
-        res.render('/main')
+        res.render('main.ejs')
     }
    
 }
