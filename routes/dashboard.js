@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const mainController = require('../controllers/main')
+const dashboardController = require('../controllers/dashboard')
 const { ensureAuth} = require('../middleware/auth')
 
 
-router.get('/',ensureAuth, mainController.getMain)
+router.get('/',ensureAuth, dashboardController.getDash)
 
 module.exports = router
