@@ -1,7 +1,7 @@
 # Final-Score Introduction
 The Final-Score is an app that helps everyone associated with youth sports better organize teams, rosters, and coaches information. The app will also help make the lives of parents so much easier as they can easily communicate with each other and with the coaches by using a private messaging feature available in this app too.
 
-The Locker Room is an easy to use app that  keeps team information organized and allows you to communicate directly with coaches and parents in one place. Whether you are a coach or the parent of one, this app is perfect for leaving messages and setting up practices among other things.
+Final Score is an easy to use app that  keeps team information organized and allows you to communicate directly with coaches and parents in one place. Whether you are a coach or the parent of one, this app is perfect for leaving messages and setting up practices among other things.
 
 ---
 
