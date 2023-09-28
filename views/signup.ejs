@@ -1,20 +1,36 @@
+<!-- testing login page worked, now need to figure out how to make new login page work -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/signup.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <title>Final Score Login</title>
 </head>
 <body>
     
-    <form action="/signup" method="POST">
+    <body id="particles-js"></body>
+<div class="animated bounceInDown">
+  <div class="container">
+    <span class="error animated tada" id="msg"></span>
+    <form name="form1" class="box" action="/login" method="POST">
+      <h4>Final<span>Score</span></h4>
+      <h5>Create new account</h5>
+      <form action="/signup" method="POST">
         <input type="text" name="userName" placeholder="User Name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="confirmPassword" placeholder="Confirm Password">
-        <input type="submit">
+        <input type="submit" value="Create Account" class="btn1">
     </form>
+      </form>
+        <a href="/login" class="have">Already have an account? Login!</a>
+  </div> 
+       <div class="footer">
+      
+    </div>
+</div>
 </body>
 </html>
+
