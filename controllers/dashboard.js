@@ -1,6 +1,6 @@
 exports.getDash = (req,res) => {
     if(req.user){
-        res.render('dashboard.ejs')
+        res.render('admin-dash.ejs')
     }
    
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <!-- Form to add a new league -->
+    <form id="league-form">
+        <h2>Add a League</h2>
+        <input type="text" id="league-name" placeholder="League Name" required>
+        <input type="text" id="sport" placeholder="Sport" required>
+        <input type="date" id="start-date" required>
+        <input type="date" id="end-date" required>
+        <button type="button" id="add-league">Add League</button>
+    </form>
+
+    <!-- Form to add teams to an existing league -->
+    <form id="team-form">
+        <h2>Add Teams to League</h2>
+        <select id="league-select">
+            <!-- Populate this select with existing leagues from your database -->
+            <option value="league-1">League 1</option>
+            <option value="league-2">League 2</option>
+            <!-- Add more options for other leagues -->
+        </select>
+        <input type="text" id="team-name" placeholder="Team Name" required>
+        <input type="text" id="team-location" placeholder="Location" required>
+        <input type="text" id="team-logo" placeholder="Team Logo URL">
+        <button type="button" id="add-team">Add Team</button>
+    </form>
+
+    <!-- Display existing leagues and teams -->
+    <h2>Existing Leagues and Teams</h2>
+    <ul id="league-list">
+        <!-- Display existing leagues and teams here -->
+    </ul>
+
+    <!-- JavaScript to handle form submissions and update the list -->
+    <script src="/js/admin-dash.js">
+        // JavaScript code here
+
+        // Handle form submissions and update the league list
+    </script>
+</body>
+</html>

@@ -1,18 +1,22 @@
 const mongoose = require('mongoose')
 
-const TodoSchema = new mongoose.Schema({
-  todo: {
+const leagueSchema = new mongoose.Schema({
+  leagueName: {
     type: String,
     required: true,
   },
-  completed: {
-    type: Boolean,
+  sport: {
+    type: String,
     required: true,
   },
-  userId: {
-    type: String,
+  startDate: {
+    type: Date,
+    required: true
+  },
+  endDate: {
+    type: Date,
     required: true
   }
 })
 
-module.exports = mongoose.model('Todo', TodoSchema)
+module.exports = mongoose.model('League', leagueSchema)
