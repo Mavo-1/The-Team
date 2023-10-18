@@ -6,7 +6,7 @@ exports.getLogin = (req,res) => {
     if(req.user){
         return res.redirect('/dashboard')//
     }
-    res.render('login.ejs', {
+    res.render('login.html', {
         title: 'Login'
     })
 }
@@ -51,7 +51,7 @@ exports.getSignup = (req, res) => {
   if (req.user) {
     return res.redirect('/dashboard') //
   }
-  res.render('signup.ejs', {
+  res.render('signup.html', {
     title: 'Create Account'
   })
 }

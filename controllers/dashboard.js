@@ -1,9 +1,9 @@
-exports.getDash = (req,res) => {
+exports.getDash = ( '/admin-dash', (req,res)=> {
     if(req.user){
-        res.render('admin-dash.ejs')
+        res.render('admin-dash.html')
     }
    
-}
+})
 
 
 

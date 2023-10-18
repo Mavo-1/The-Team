@@ -8,6 +8,7 @@ const flash = require('express-flash')
 const dotenv = require('dotenv')
 const connectDB = require('./config/database')
 const logger = require('morgan')
+const path= require('path')
 
 const homeRoutes= require('./routes/home')
 //const todoRoutes = require('./routes/todos')
@@ -23,10 +24,9 @@ require('./config/passport')(passport)
 connectDB()
 
 
-
-app.engine('html',require('ejs').renderFile)
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
+app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))

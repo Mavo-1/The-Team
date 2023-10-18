@@ -6,7 +6,7 @@ const League = require('/models/League');
 
 exports.getCreateLeague = (req,res) => {
     if(req.user){
-        res.render('create-league.ejs', {
+        res.render('create-league.html', {
             title: 'Create League',
         });
     }else {
