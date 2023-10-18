@@ -1,42 +1,41 @@
-const express = require('express');
-const router = express.Router();
-const League = require('/models/League'); 
+const League = require('../models/league'); 
 
 //Post request to add a new league
 
-exports.getCreateLeague = (req,res) => {
-    if(req.user){
-        res.render('create-league.html', {
-            title: 'Create League',
-        });
-    }else {
-        res.redirect('/login'); //Redirects to login if not authenticated
+exports.getLeagues = async (req, res) => {
+    try {
+        // Retrieve the list of leagues from your MongoDB database
+        const leagues = await League.find();
+
+        // Render the 'leagues.html' view and pass the data
+        res.render('leagues.html', { leagues });
+    } catch (error) {
+        // Handle any potential errors
+        res.render('error.html', { error });
     }
 };
 
-//Handles the creation of the new league
+exports.addLeague = async (req, res) => {
+    console.log('Received a POST request to /leagues');
+    const { name, sport, startDate, endDate } = req.body;
+    console.log('Received form data:', { name, sport, startDate, endDate });
+    try {
+        // Create a new league document using the League Model
+        const newLeague = new League({
+            leagueName: name,
+            sport,
+            startDate,
+            endDate,
+        });
 
-exports.postCreateLeague = (req,res) => {
-    const {leagueName, sport, startDate, endDate} = req.body;
+        // Save the new league to the database
+        await newLeague.save();
 
-    const newLeague = new League({
-        leagueName,
-        sport,
-        startDate,
-        endDate,
-    });
-
-    newLeague.save((err) => {
-        //Handles any errors (validation errors or database errors)
-        if(err){
-            console.error(err);
-            req.flash('error', {msg:'Error adding new league'});
-            res.redirect('/admin-dash'); //Redirects to admin dash to try again
-        }else {
-            req.flash('success', {msg: 'League created successfully'});
-            res.redirect('/admin-dash');
-        }
-    })
-}
-
+        // Redirect to the leagues page after adding
+        res.redirect('/leagues');
+    } catch (error) {
+        // Handle any potential errors
+        res.render('error.html', { error });
+    }
+};
 
