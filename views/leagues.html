@@ -33,7 +33,7 @@
         </table>
     
         <!-- Form to add a new league -->
-        <form action="./leagues.html" method="post" class="mt-8">
+        <form action="/newLeague" method="POST" class="mt-8">
             <h3 class="text-lg font-semibold mb-4">Add a New League</h3>
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
@@ -48,10 +48,10 @@
                 <input type="date" id="startDate" name="startDate" class="form-input" required>
             </div>
             <div class="mb-4">
-                <label for="finishDate" class="block text-sm font-medium text-gray-700">Finish Date</label>
-                <input type="date" id="finishDate" name="finishDate" class="form-input" required>
+                <label for="endDate" class="block text-sm font-medium text-gray-700">Finish Date</label>
+                <input type="date" id="endDate" name="endDate" class="form-input" required>
             </div>
-            <button type="submit" class="btn btn-primary">Add League</button>
+            <button type="submit" value="Submit" class="btn btn-primary">Add League</button>
         </form>
     </div>
 </body>

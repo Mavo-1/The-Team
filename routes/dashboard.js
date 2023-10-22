@@ -10,6 +10,6 @@ router.get('/', ensureAuth, dashboardController.getDash);
 router.get('/leagues',ensureAuth,dashboardController.getLeagues);
 router.get('/standings', ensureAuth, dashboardController.getStandings);
 router.get('/schedules', ensureAuth, dashboardController.getSchedule);
-router.get('/practices', ensureAuth, dashboardController.getPractices);
+router.get('/practice', ensureAuth, dashboardController.getPractices);
 
 module.exports = router;

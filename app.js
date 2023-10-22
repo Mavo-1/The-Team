@@ -28,7 +28,7 @@ connectDB()
 app.engine('html',require('ejs').renderFile)
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(logger('dev'))
 
@@ -42,6 +42,10 @@ app.use(
     })
   )
 
+  app.use((req, res, next) => {
+    console.log(`Received ${req.method} request for ${req.url}`);
+    next();
+  });
 
 //Passport middleware
 app.use(passport.initialize())
