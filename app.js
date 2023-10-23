@@ -10,10 +10,6 @@ const connectDB = require('./config/database')
 const logger = require('morgan')
 const path= require('path')
 
-const homeRoutes= require('./routes/home')
-//const todoRoutes = require('./routes/todos')
-const dashRoutes = require('./routes/dashboard')
-const leagueRoutes = require('./routes/leagueRoutes')
 
 
 //Load config
@@ -24,13 +20,13 @@ require('./config/passport')(passport)
 
 connectDB()
 
-
-app.engine('html',require('ejs').renderFile)
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
-app.use(logger('dev'))
+app.engine('html', require('ejs').renderFile); // This line renders HTML files using EJS
+app.set('view engine', 'html'); // Set EJS as the view engine
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(logger('dev'));
 
 //Sessions
 app.use(
@@ -52,6 +48,10 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(flash())
+
+const homeRoutes= require('./routes/home')
+const dashRoutes = require('./routes/dashboard')
+const leagueRoutes = require('./routes/leagueRoutes')
 
 //Routes
 app.use('/', homeRoutes)

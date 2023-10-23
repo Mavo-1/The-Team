@@ -1,35 +1,38 @@
-exports.getDash =  (req,res)=> {
+
+
+
+exports.getDashEJS =  (req,res)=> {
     if(req.user){
-        res.render('admin-dash.html')
+        res.render('admin-dash.ejs')
     }
    
 };
 
 //Function to render the Leagues Page
 
-exports.getLeagues = (req,res)=> {
+exports.getLeaguesEJS = (req,res)=> {
     if(req.user){
-        res.render('leagues.html') //{leaguesData} replaces with actually league data if you have it
+        res.render('leagues.ejs') //{leaguesData} replaces with actually league data if you have it
     }
 }
 
 //Function to render the Standings page
-exports.getStandings = (req,res)=> {
+exports.getStandingsEJS = (req,res)=> {
     if(req.user){
-        res.render('standings.html') //{standingsData} replaces with actually league data if you have it
+        res.render('standings.ejs') //{standingsData} replaces with actually league data if you have it
     }
 }
 
 
 //Function to render the Schedule page
-exports.getSchedule = (req,res)=> {
-    res.render('schedules.html') //{schedulesData} replaces with actually league data if you have it
+exports.getScheduleEJS = (req,res)=> {
+    res.render('schedules.ejs') //{schedulesData} replaces with actually league data if you have it
 }
 
 
 //Function to render the practice page
-exports.getPractices= (req,res)=> {
-    res.render('practices.html') //{practiceData} replaces with actually league data if you have it
+exports.getPracticesEJS = (req,res)=> {
+    res.render('practices.ejs') //{practiceData} replaces with actually league data if you have it
 }
 
 

@@ -6,10 +6,10 @@ const { ensureAuth } = require('../middleware/auth');
 
 
 // Dashboard routes
-router.get('/', ensureAuth, dashboardController.getDash);
-router.get('/leagues',ensureAuth,dashboardController.getLeagues);
-router.get('/standings', ensureAuth, dashboardController.getStandings);
-router.get('/schedules', ensureAuth, dashboardController.getSchedule);
-router.get('/practice', ensureAuth, dashboardController.getPractices);
+router.get('/', dashboardController.getDashEJS);
+router.get('/leagues',ensureAuth,dashboardController.getLeaguesEJS);
+router.get('/standings', ensureAuth, dashboardController.getStandingsEJS);
+router.get('/schedules', ensureAuth, dashboardController.getScheduleEJS);
+router.get('/practice', ensureAuth, dashboardController.getPracticesEJS);
 
 module.exports = router;
