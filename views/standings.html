@@ -6,32 +6,39 @@
     <title>Standings</title>
     <link rel="stylesheet" href="standings.css">
 </head>
-<body>
-    <h1>Standings</h1>
-    <table class="team-table">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standings</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <h1 class="text-3xl font-semibold text-center mt-8">Standings</h1>
+    <table class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg">
         <thead>
             <tr>
-                <th>Rank</th>
-                <th>Team Name</th>
-                <th>Record</th>
-                <th>Next Opponent</th>
+                <th class="px-4 py-2 text-left">Rank</th>
+                <th class="px-4 py-2">Team Name</th>
+                <th class="px-4 py-2">Record</th>
+                <th class="px-4 py-2">Next Opponent</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Team A</td>
-                <td>10-2</td>
-                <td>Team B</td>
+            <tr class="hover:bg-gray-200">
+                <td class="px-4 py-2">1</td>
+                <td class="px-4 py-2">Team A</td>
+                <td class="px-4 py-2">10-2</td>
+                <td class="px-4 py-2">Team B</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Team B</td>
-                <td>9-3</td>
-                <td>Team C</td>
+            <tr class="hover:bg-gray-200">
+                <td class="px-4 py-2">2</td>
+                <td class="px-4 py-2">Team B</td>
+                <td class="px-4 py-2">9-3</td>
+                <td class="px-4 py-2">Team C</td>
             </tr>
             <!-- Add more rows for other teams -->
         </tbody>
     </table>
 </body>
-</html>

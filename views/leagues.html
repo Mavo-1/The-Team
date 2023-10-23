@@ -3,55 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add New League</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Here are all your leagues</h1>
+<body class="bg-gray-100 font-sans">
+    <h1 class="text-3xl font-semibold text-center mt-8">Add a New League</h1>
     <div class="container mx-auto p-8">
-        <h2 class="text-2xl font-semibold">Leagues</h2>
-        
-        <!-- Table to display existing leagues -->
-        <table class="table-auto w-full mt-4">
-            <thead>
-                <tr>
-                    <th class="px-4 py-2">Name</th>
-                    <th class="px-4 py-2">Sport</th>
-                    <th class="px-4 py-2">Start Date</th>
-                    <th class="px-4 py-2">Finish Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Loop through your leagues data and populate the table rows -->
-                <!-- Example row, replace with actual data -->
-                <tr>
-                    <td class="border px-4 py-2">League Name</td>
-                    <td class="border px-4 py-2">Sport</td>
-                    <td class="border px-4 py-2">Start Date</td>
-                    <td class="border px-4 py-2">Finish Date</td>
-                </tr>
-            </tbody>
-        </table>
-    
-        <!-- Form to add a new league -->
-        <form action="/newLeague" method="POST" class="mt-8">
-            <h3 class="text-lg font-semibold mb-4">Add a New League</h3>
+        <form action="/newLeague" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" class="form-input" required>
+                <input type="text" id="name" name="name" class="w-full form-input" required>
             </div>
             <div class="mb-4">
                 <label for="sport" class="block text-sm font-medium text-gray-700">Sport</label>
-                <input type="text" id="sport" name="sport" class="form-input" required>
+                <input type="text" id="sport" name="sport" class="w-full form-input" required>
             </div>
             <div class="mb-4">
                 <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
-                <input type="date" id="startDate" name="startDate" class="form-input" required>
+                <input type="date" id="startDate" name="startDate" class="w-full form-input" required>
             </div>
             <div class="mb-4">
                 <label for="endDate" class="block text-sm font-medium text-gray-700">Finish Date</label>
-                <input type="date" id="endDate" name="endDate" class="form-input" required>
+                <input type="date" id="endDate" name="endDate" class="w-full form-input" required>
             </div>
-            <button type="submit" value="Submit" class="btn btn-primary">Add League</button>
+            <button type="submit" class="w-full btn btn-primary">Add League</button>
         </form>
     </div>
 </body>
