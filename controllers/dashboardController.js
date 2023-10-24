@@ -46,25 +46,3 @@ exports.getCreateLeaguePage = (req, res) => {
     res.render('createLeague.ejs');
   };
   
-
-  exports.addLeague = async (req, res) => {
-    try {
-        // Process the form data from the request
-        const { leagueName, sport, startDate, endDate } = req.body;
-
-        // Create a new league in the database
-        const newLeague = new League({
-            leagueName,
-            sport,
-            startDate,
-            endDate,
-        });
-
-        await newLeague.save();
-
-        // Redirect back to the leagues page
-        res.redirect('/dashboard');
-    } catch (error) {
-        res.render('error.html', { error });
-    }
-}
