@@ -1,47 +1,39 @@
-const League = require('../models/League'); 
+const League = require('../models/League');
 
-
-
+// Render the Leagues page
 exports.getLeaguesPage = async (req, res) => {
-    try {
-        // Logic to fetch data if needed
-        res.render('leagues.ejs', { /* data if needed */ });
-    } catch (error) {
-        res.render('error.html', { error });
-    }
+  try {
+    const leagues = await League.find();
+    res.render('leagues', { leagues });
+  } catch (error) {
+    res.render('error.html', { error });
+  }
 };
 
-exports.getLeaguesEJS = async (req, res) => {
-    try {
-        const leagues = await League.find();
-        res.render('leagues.ejs', { leagues });
-    } catch (error) {
-        res.render('error.html', { error });
-    }
+// Render the Create League page
+exports.getCreateLeaguePage = (req, res) => {
+  res.render('createLeague');
 };
 
-exports.addLeagueEJS = async (req, res) => {
-    console.log('Add league route hit');
-    console.log('Received a POST request to /leagues');
-    const { name, sport, startDate, endDate } = req.body;
-    
-    if (!name || !sport || !startDate || !endDate) {
-        return res.status(400).send('All fields are required'); // Add appropriate error handling here
-    }
+// Handle the creation of a new league
+exports.createLeague = async (req, res) => {
+  const { leagueName, sport, startDate, endDate } = req.body;
 
-    try {
-        const newLeague = new League({
-            leagueName: name,
-            sport,
-            startDate,
-            endDate,
-        });
+  try {
+    // Create a new league
+    const newLeague = new League({
+      leagueName,
+      sport,
+      startDate,
+      endDate,
+    });
 
-        await newLeague.save();
+    // Save the new league to the database
+    await newLeague.save();
 
-        res.redirect('/newleagues');
-    } catch (error) {
-        res.render('error.html', { error });
-    }
+    // Redirect back to the Leagues page
+    res.redirect('/leagues');
+  } catch (error) {
+    res.render('error.html', { error });
+  }
 };
-

@@ -7,29 +7,39 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans">
-    <%- include('partials/header') %>
-    <h1 class="text-3xl font-semibold text-center mt-8">Add a New League</h1>
-    <div class="container mx-auto p-8">
-        <form action="/leagues/newLeague" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
-            <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" class="w-full form-input" required>
+    <div class="min-h-screen bg-gray-100">
+        
+        <main class="py-10">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6">Leagues</h1>
+
+                <!-- List of Leagues -->
+                <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                    <ul>
+                        <% leagues.forEach(league => { %>
+                            <li class="border-b border-gray-200">
+                                <div class="flex items-center justify-between px-4 py-3 sm:px-6">
+                                    <div class="text-sm leading-5 font-medium text-indigo-600">
+                                        <%= league.leagueName %>
+                                    </div>
+                                    <!-- Add a link to view the teams for this league -->
+                                    <a href="/leagues/<%= league._id %>/teams" class="text-indigo-600 hover:text-indigo-900">View Teams</a>
+                                </div> 
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+
+                <!-- Add League Button -->
+                <div class="mt-6">
+                    <a href="/leagues/create" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add League</a>
+                </div>
             </div>
-            <div class="mb-4">
-                <label for="sport" class="block text-sm font-medium text-gray-700">Sport</label>
-                <input type="text" id="sport" name="sport" class="w-full form-input" required>
-            </div>
-            <div class="mb-4">
-                <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
-                <input type="date" id="startDate" name="startDate" class="w-full form-input" required>
-            </div>
-            <div class="mb-4">
-                <label for="endDate" class="block text-sm font-medium text-gray-700">Finish Date</label>
-                <input type="date" id="endDate" name="endDate" class="w-full form-input" required>
-            </div>
-            <button type="submit" class="w-full btn btn-primary">Add League</button>
-        </form>
-        <%- include('partials/footer') %>
+        </main>
+    </div>
+        
+
+<%- include('partials/footer') %>
     </div>
 </body>
 </html>

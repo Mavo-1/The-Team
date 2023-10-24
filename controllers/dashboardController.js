@@ -12,7 +12,10 @@ exports.getDashEJS =  (req,res)=> {
 
 exports.getLeaguesEJS = (req,res)=> {
     if(req.user){
-        res.render('leagues.ejs') //{leaguesData} replaces with actually league data if you have it
+        // Replace the next line with your logic to fetch the list of leagues from your database
+        const leagues = [] 
+        // You should fetch leagues from your database here
+        res.render('leagues', { leagues });
     }
 }
 
