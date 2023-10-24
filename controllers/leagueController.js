@@ -1,23 +1,6 @@
 const League = require('../models/League'); 
 
-//Post request to add a new league
-exports.getDashboardPage = async (req, res) => {
-    try {
-        // Logic to fetch data if needed
-        res.render('admin-dash.ejs', { /* data if needed */ });
-    } catch (error) {
-        res.render('error.html', { error });
-    }
-};
 
-exports.getStandingsPage = async (req, res) => {
-    try {
-        // Logic to fetch data if needed
-        res.render('standings.ejs', { /* data if needed */ });
-    } catch (error) {
-        res.render('error.html', { error });
-    }
-};
 
 exports.getLeaguesPage = async (req, res) => {
     try {
