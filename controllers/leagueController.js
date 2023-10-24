@@ -34,3 +34,17 @@ exports.addLeague = async (req, res) => {
         res.render('error.html', { error });
     }
 }
+
+exports.deleteLeague = async (req,res) => {
+    try{
+        const leagueId= req.params.leagueId;
+
+        //Find the league by ID and remove it from the database
+        await League.findByIdAndRemove(leagueId);
+
+        //Redirect back to the leagues page
+        res.redirect('/leagues');
+    } catch (error){
+        res.render('error.html', {error})
+    }
+}

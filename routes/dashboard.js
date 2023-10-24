@@ -11,6 +11,6 @@ router.get('/leagues',ensureAuth,dashboardController.getLeaguesEJS);
 router.get('/standings', ensureAuth, dashboardController.getStandingsEJS);
 router.get('/schedules', ensureAuth, dashboardController.getScheduleEJS);
 router.get('/practice', ensureAuth, dashboardController.getPracticesEJS);
-
 router.get('/createLeague', ensureAuth, dashboardController.getCreateLeaguePage);
+
 module.exports = router;

@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride= require('method-override')
 const app = express()
 const mongoose = require('mongoose')
 const passport = require('passport')
@@ -28,6 +29,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(logger('dev'));
 
+
+//method-override middleware
+app.use(methodOverride('_method'));
+
 //Sessions
 app.use(
     session({
@@ -42,6 +47,8 @@ app.use(
     console.log(`Received ${req.method} request for ${req.url}`);
     next();
   });
+
+
 
 //Passport middleware
 app.use(passport.initialize())
