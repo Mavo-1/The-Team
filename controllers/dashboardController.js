@@ -63,7 +63,7 @@ exports.getCreateLeaguePage = (req, res) => {
         await newLeague.save();
 
         // Redirect back to the leagues page
-        res.redirect('/leagues');
+        res.redirect('/dashboard');
     } catch (error) {
         res.render('error.html', { error });
     }
