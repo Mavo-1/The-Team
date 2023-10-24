@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <%- include('partials/header') %>
 
     <h1 class="text-3xl font-semibold text-center mt-8">Add a New League</h1>
-    <div class="container mx-auto p-8">
-        <form action="" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
+    <div class="container mx-auto p-8 max-w-md" >
+        <form action="/dashboard/create" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="name" class="w-full form-input" required>
+                <input type="text" id="name" name="leagueName" class="w-full form-input" required>
             </div>
             <div class="mb-4">
                 <label for="sport" class="block text-sm font-medium text-gray-700">Sport</label>

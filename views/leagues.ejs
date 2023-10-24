@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New League</title>
+    <title>Leagues</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans">
+    <%- include('partials/header') %>
     <div class="min-h-screen bg-gray-100">
-        
         <main class="py-10">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold text-gray-900 mb-6">Leagues</h1>
@@ -32,10 +32,11 @@
 
                 <!-- Add League Button -->
                 <div class="mt-6">
-                    <a href="/leagues/create" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add League</a>
+                    <a href="/dashboard/createLeague" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add League</a>
                 </div>
             </div>
         </main>
+        
     </div>
         
 

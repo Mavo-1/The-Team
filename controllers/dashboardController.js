@@ -1,5 +1,5 @@
 
-
+const League = require('../models/League');
 
 exports.getDashEJS =  (req,res)=> {
     if(req.user){
@@ -10,14 +10,16 @@ exports.getDashEJS =  (req,res)=> {
 
 //Function to render the Leagues Page
 
-exports.getLeaguesEJS = (req,res)=> {
-    if(req.user){
-        // Replace the next line with your logic to fetch the list of leagues from your database
-        const leagues = [] 
-        // You should fetch leagues from your database here
-        res.render('leagues', { leagues });
+exports.getLeaguesEJS = async (req,res) => {
+    try {
+        // Use the League model to find all leagues in the database
+        const leagues = await League.find();
+
+        res.render('leagues.ejs', { leagues });
+    } catch (error) {
+        res.render('error.html', { error });
     }
-}
+};
 
 //Function to render the Standings page
 exports.getStandingsEJS = (req,res)=> {
@@ -39,5 +41,30 @@ exports.getPracticesEJS = (req,res)=> {
 }
 
 
+// Render the Create League page
+exports.getCreateLeaguePage = (req, res) => {
+    res.render('createLeague.ejs');
+  };
+  
 
+  exports.addLeague = async (req, res) => {
+    try {
+        // Process the form data from the request
+        const { leagueName, sport, startDate, endDate } = req.body;
 
+        // Create a new league in the database
+        const newLeague = new League({
+            leagueName,
+            sport,
+            startDate,
+            endDate,
+        });
+
+        await newLeague.save();
+
+        // Redirect back to the leagues page
+        res.redirect('/leagues');
+    } catch (error) {
+        res.render('error.html', { error });
+    }
+}
