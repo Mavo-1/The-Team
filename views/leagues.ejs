@@ -10,7 +10,7 @@
     <%- include('partials/header') %>
     <h1 class="text-3xl font-semibold text-center mt-8">Add a New League</h1>
     <div class="container mx-auto p-8">
-        <form action="/newLeague" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
+        <form action="/leagues/newLeague" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                 <input type="text" id="name" name="name" class="w-full form-input" required>

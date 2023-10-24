@@ -56,7 +56,7 @@ exports.addLeagueEJS = async (req, res) => {
 
         await newLeague.save();
 
-        res.redirect('/leagues');
+        res.redirect('/newleagues');
     } catch (error) {
         res.render('error.html', { error });
     }
