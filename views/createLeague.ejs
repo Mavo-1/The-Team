@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
 <body>
@@ -28,7 +28,9 @@
                 <label for="endDate" class="block text-sm font-medium text-gray-700">Finish Date</label>
                 <input type="date" id="endDate" name="endDate" class="w-full form-input" required>
             </div>
-            <button type="submit" class="w-full btn btn-primary">Add League</button>
+            <div>
+            <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add League</button>
+            </div>  
         </form>
         <%- include('partials/footer') %>
     </div>
