@@ -14,21 +14,21 @@
         <form action="/leagues/create" method="POST" class="mt-8 p-8 bg-white rounded-lg shadow-lg">
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                <input type="text" id="name" name="leagueName" class="w-full form-input" required>
+                <input type="text" id="name" name="leagueName" class="w-full form-input border" required>
             </div>
             <div class="mb-4">
                 <label for="sport" class="block text-sm font-medium text-gray-700">Sport</label>
-                <input type="text" id="sport" name="sport" class="w-full form-input" required>
+                <input type="text" id="sport" name="sport" class="w-full form-input border" required>
             </div>
             <div class="mb-4">
                 <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
-                <input type="date" id="startDate" name="startDate" class="w-full form-input" required>
+                <input type="date" id="startDate" name="startDate" class="w-full form-input border" required>
             </div>
             <div class="mb-4">
                 <label for="endDate" class="block text-sm font-medium text-gray-700">Finish Date</label>
-                <input type="date" id="endDate" name="endDate" class="w-full form-input" required>
+                <input type="date" id="endDate" name="endDate" class="w-full form-input border" required>
             </div>
-            <div>
+            <div class="mt-6 flex justify-center">
             <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add League</button>
             </div>  
         </form>
