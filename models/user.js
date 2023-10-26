@@ -1,11 +1,18 @@
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
-    userName: {type: String, unique:true},
-    email: {type: String, unique: true},
-    password: {type:String}
-})
+// // Clear the Mongoose model cache for 'User' before defining the schema
+// delete mongoose.models['User'];
+// delete mongoose.modelSchemas['User'];
+
+if (!mongoose.models.User) {
+  const UserSchema = new mongoose.Schema({
+    userName: { type: String, unique: true },
+    email: { type: String, unique: true },
+    password: { type: String },
+    firstName: { type: String },
+    lastName: { type: String },
+  });
 
 //password hash middleware
 
@@ -32,4 +39,7 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword,
   }
 
 
-  module.exports = mongoose.model('User', UserSchema)
+  module.exports = mongoose.model('User', UserSchema);
+}else {
+  module.exports = mongoose.model('User')
+}

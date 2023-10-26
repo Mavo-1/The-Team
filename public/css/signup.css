@@ -33,14 +33,14 @@ body, html {
   border-top: 10px solid #79a6fe;
   border-bottom: 10px solid #8BD17C;
   width: 400px;
-  height: 600px;
+  height: 740px;
   box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
 }
 
 .box h4 {
   font-family: 'Source Sans Pro', sans-serif;
   color: #5c6bc0; 
-  font-size: 18px;
+  font-size: 24px;
   margin-top:94px;;
 }
 
@@ -55,7 +55,7 @@ body, html {
   color: #a1a4ad;
   letter-spacing: 1.5px;
   margin-top: -15px;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 .box input[type = "email"],.box input[type = "password"], .box input[type = "text"]{

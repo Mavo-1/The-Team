@@ -1,6 +1,6 @@
 const passport = require('passport')
 const validator = require('validator')
-const User = require('../models/user')
+const User = require('../models/User')
 
 exports.getLogin = (req,res) => {
     if(req.user){
@@ -69,6 +69,8 @@ exports.postSignup = (req, res, next) => {
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
 
   const user = new User({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password
