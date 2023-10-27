@@ -1,9 +1,6 @@
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
-// // Clear the Mongoose model cache for 'User' before defining the schema
-// delete mongoose.models['User'];
-// delete mongoose.modelSchemas['User'];
 
 if (!mongoose.models.User) {
   const UserSchema = new mongoose.Schema({

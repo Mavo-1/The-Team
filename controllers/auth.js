@@ -67,7 +67,8 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('../signup')
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-
+// Add a console.log to check the data before creating a user
+console.log('User data before creating:', req.body);
   const user = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -75,6 +76,9 @@ exports.postSignup = (req, res, next) => {
     email: req.body.email,
     password: req.body.password
   })
+  // Add a console.log to check the user object
+  console.log('User object before saving:', user);
+
 
   User.findOne({$or: [
     {email: req.body.email},

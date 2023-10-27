@@ -3,7 +3,7 @@ const League = require('../models/League');
 
 exports.getDashEJS =  (req,res)=> {
     if(req.user){
-        res.render('admin-dash.ejs')
+        res.render('admin-dash.ejs', {user: req.user })
     }
    
 };
