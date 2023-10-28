@@ -1,4 +1,4 @@
-
+const Team = require('../models/Team')
 const League = require('../models/League');
 
 exports.getDashEJS = async (req, res) => {
@@ -26,6 +26,22 @@ exports.getLeaguesEJS = async (req,res) => {
         res.render('error.html', { error });
     }
 };
+
+// Function to display the teams page for a specific league
+exports.getTeamsEJS = async (req, res) => {
+    try {
+        const leagueId = req.params.leagueId;
+        const league = await League.findById(leagueId);
+        if (!league) {
+            return res.status(404).send('League not found');
+        }
+        const teams = await Team.find({ league: league._id });
+        res.render('teams.ejs', { teams, league });
+    } catch (error) {
+        res.render('error.html', { error });
+    }
+};
+
 
 //Function to render the Standings page
 exports.getStandingsEJS = (req,res)=> {

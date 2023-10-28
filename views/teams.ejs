@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+    <%- include('partials/header') %>
+    <div class="min-h-screen">
+        <main class="py-10">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-6">Teams</h1>
+
+                <!-- List of Teams -->
+                <div class="bg-white shadow overflow-hidden sm:rounded-md">
+                    <!-- Table header -->
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2">Team Name</th>
+                                <th class="px-4 py-2">Coach Name</th>
+                                <th class="px-4 py-2">Age Level</th>
+                                <th class="px-4 py-2">Coach Number</th>
+                                <th class="px-4 py-2">Sport</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Use EJS to iterate through teams and display them in the table -->
+                            <% teams.forEach(team => { %>
+                                <tr>
+                                    <td class="px-4 py-2"><%= team.teamName %></td>
+                                    <td class="px-4 py-2"><%= team.coachName %></td>
+                                    <td class="px-4 py-2"><%= team.ageLevel %></td>
+                                    <td class="px-4 py-2"><%= team.coachNumber %></td>
+                                    <td class="px-4 py-2"><%= team.sport %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Add Team Button -->
+                <div class="mt-6">
+                    <button id="addTeamButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add Team</button>
+                </div>
+
+                <!-- Add Team Form (Initially hidden) -->
+                <form id="addTeamForm" class="hidden mt-6">
+                    <h2 class="text-xl font-semibold mb-2">Add Team</h2>
+                    <div class="mb-4">
+                        <label for="teamName" class="block text-gray-700 text-sm font-bold mb-2">Team Name</label>
+                        <input type="text" id="teamName" name="teamName" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <div class="mb-4">
+                        <label for="coachName" class="block text-gray-700 text-sm font-bold mb-2">Coach Name</label>
+                        <input type="text" id="coachName" name="coachName" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <div class="mb-4">
+                        <label for="ageLevel" class="block text-gray-700 text-sm font-bold mb-2">Age Level</label>
+                        <input type="text" id="ageLevel" name="ageLevel" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <div class="mb-4">
+                        <label for="coachNumber" class="block text-gray-700 text-sm font-bold mb-2">Coach Number</label>
+                        <input type="text" id="coachNumber" name="coachNumber" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <div class="mb-4">
+                        <label for="sport" class="block text-gray-700 text-sm font-bold mb-2">Sport</label>
+                        <input type="text" id="sport" name="sport" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <button type="button" id="submitTeamButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add Team</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <%- include('partials/footer') %>
+    <script src="/javascript/teams.js"></script>
+</body>
+</html>
