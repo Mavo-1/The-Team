@@ -18,14 +18,34 @@
   </div>
 
   <!-- Add more sections as needed for leagues, standings, schedule, practices -->
-  <!-- Example: Leagues Section -->
+  
   <div class="container mx-auto p-8">
-      <h2 class="text-2xl font-semibold">Leagues <%= leagueCount %></h2>
-      <!-- Add content for the leagues section here -->
+      
+      <!-- Dashboard content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Leagues Box -->
+      <div class="bg-blue-100 p-4 rounded-lg shadow-md">
+          <h2 class="text-2xl font-semibold mb-2">Leagues</h2>
+          <p class="text-4xl font-bold text-blue-500"><%= leagueCount %></p>
+      </div>
+
+      <!-- Players Box -->
+      <div class="bg-red-100 p-4 rounded-lg shadow-md">
+          <h2 class="text-2xl font-semibold mb-2">Players</h2>
+          <p class="text-4xl font-bold text-green-500">150</p>
+      </div>
+
+      <!-- Teams Box -->
+      <div class="bg-yellow-100 p-4 rounded-lg shadow-md">
+          <h2 class="text-2xl font-semibold mb-2">Teams</h2>
+          <p class="text-4xl font-bold text-red-500">12</p>
+      </div>
   </div>
-
-  <!-- Repeat the structure for other sections -->
-
+  </div>
+    
+ 
+   
+  
 </body>
 </html>
   </body>
