@@ -7,10 +7,12 @@ const { ensureAuth } = require('../middleware/auth');
 // Display the Create League form
 router.get('/',ensureAuth, leagueController.getLeaguesEJS);
 // Create (POST) a new league
+
+router.get('/create', ensureAuth, leagueController.getCreateLeaguePage);
 router.post('/create', ensureAuth, leagueController.addLeague);
 router.delete('/:leagueId', ensureAuth, leagueController.deleteLeague);
 
-
-//router.get('/leagues/:leagueId/teams', ensureAuth, leagueController.getTeamsForLeague);
+router.get('/:leagueId/teams', ensureAuth, leagueController.getTeamsEJS);
+router.post('/:leagueId/teams', ensureAuth, leagueController.postTeamsEJS);
 
 module.exports = router;

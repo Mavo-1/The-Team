@@ -15,14 +15,14 @@ const teamSchema = new Schema({
         required: true,
     },
     coachNumber: {
-        type: Number,
+        type: String,
         required: true,
     },
     sport: {
         type: String,
         required: true,
     },
-    league: {
+    leagueName: {
         type: Schema.Types.ObjectId,
         ref: 'League',
         required: true,

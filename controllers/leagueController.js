@@ -1,4 +1,5 @@
 const League = require('../models/League');
+const Team = require('../models/Team')
 
 
 
@@ -12,6 +13,11 @@ exports.getLeaguesEJS = async (req,res) => {
         res.render('error.html', { error });
     }
 };
+
+// Render the Create League page
+exports.getCreateLeaguePage = (req, res) => {
+    res.render('createLeague.ejs');
+  };
 
 exports.addLeague = async (req, res) => {
     try {
@@ -48,3 +54,47 @@ exports.deleteLeague = async (req,res) => {
         res.render('error.html', {error})
     }
 }
+
+//Teams
+// Function to display the teams page for a specific league
+exports.getTeamsEJS = async (req, res) => {
+    try {
+        const leagueId = req.params.leagueId; // Retrieve leagueId from query parameters
+
+        if (!leagueId) {
+            return res.status(400).send('Missing leagueId parameter');
+        }
+
+        const league = await League.findById(leagueId);
+        if (!league) {
+            return res.status(404).send('League not found');
+        }
+
+        const teams = await Team.find({ leagueName: league._id });
+        res.render('teams.ejs', { teams, league });
+    } catch (error) {
+        res.render('error.html', { error });
+    }
+};
+
+exports.postTeamsEJS = async (req, res) => {
+    try {
+        const league = await League.findById(req.params.leagueId);
+        if (!league) {
+            return res.status(404).send('League not found');
+        }
+        const { teamName, coachName, ageLevel, coachNumber, sport, } = req.body;
+        const team = new Team({
+            teamName,
+            coachName,
+            ageLevel,
+            coachNumber,
+            sport,
+            leagueName: league._id,
+        });
+        await team.save();
+        res.redirect(`/leagues/${league._id}/teams`);
+    } catch (error) {
+        res.render('error.html', { error });
+    }
+};

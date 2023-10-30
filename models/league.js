@@ -8,7 +8,7 @@ const leagueSchema = new mongoose.Schema({
   sport: {
     type: String,
     required: true,
-    enum: ['soccer','basketball','volleyball','flag football','baseball']
+    
   },
   startDate: {
     type: Date,
