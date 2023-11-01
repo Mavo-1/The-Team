@@ -27,6 +27,13 @@ const teamSchema = new Schema({
         ref: 'League',
         required: true,
     },
+    players: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Player'
+        }
+       
+    ]
 });
 
 const Team = mongoose.model('Team', teamSchema);

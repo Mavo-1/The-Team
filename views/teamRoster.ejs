@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <!-- teamRoster.ejs -->
+<h1>Team Roster for <%= team.teamName %></h1>
+
+<!-- Display Team Information -->
+<p>Coach Name: <%= team.coachName %></p>
+<p>Sport: <%= team.sport %></p>
+<p>Coach Number: <%= team.coachNumber %></p>
+
+<!-- Display Player Roster -->
+<% if(team.players.length === 0){%>
+    <p>No players on roster.</p>
+<%}else {%>
+<table>
+    <thead>
+        <tr>
+            <th>Player Name</th>
+            <th>Age</th>
+            <th>Date of Birth</th>
+            <th>Contact Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% team.players.forEach(player => { %>
+            <tr>
+                <td><%= player.firstName %> <%= player.lastName %></td>
+                <td><%= player.age %></td>
+                <td><%= player.dateOfBirth %></td>
+                <td><%= player.contactNumber %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+<% } %>
+
+<!-- Add Player Button -->
+<button id="addPlayerButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add Player</button>
+
+<!-- Add Player Form (Initially hidden) -->
+<div id="playerModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
+    <div class="bg-white p-8 rounded-lg" style="max-width: 600px;">
+        <form id="addPlayerForm" action="/<%= team.leagueName %>/teams/<%= team._id %>/addplayer" method="POST">
+            <h2 class="text-xl font-semibold mb-2">Add Player</h2>
+            <div class="mb-4">
+                <label for="firstName" class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="w-full border rounded py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="lastName" class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="w-full border rounded py-2 px-3">
+            </div>
+            <div class="mb-4">
+                <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age</label>
+                <input type="text" id="age" name="age" class="w-full border rounded py-2 px-3">
+            </div>
+            <!-- Add other player fields here, e.g., date of birth, contact number, etc. -->
+            <input type="hidden" name="teamId" value="<%= team._id %>">
+            <button type="submit" id="submitPlayerButton" class="bg-indigo-500 hover-bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Submit Player</button>
+        </form>
+        <button id="closePlayerModalButton" class="bg-red-500 text-white px-4 py-2 rounded mt-4">Close</button>
+    </div>
+</div>
+</body>
+</html>

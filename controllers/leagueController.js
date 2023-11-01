@@ -1,5 +1,6 @@
 const League = require('../models/League');
-const Team = require('../models/Team')
+const Team = require('../models/Team');
+const Player = require('../models/Player');
 
 
 
@@ -98,3 +99,51 @@ exports.postTeamsEJS = async (req, res) => {
         res.render('error.html', { error });
     }
 };
+
+exports.getTeamRosterEJS = async (req, res) => {
+    try {
+        const teamId = req.params.teamId;
+        const team = await Team.findById(teamId).populate('players'); // Assuming the player field in Team is named 'players'
+        if (!team) {
+            return res.status(404).send('Team not found');
+        }
+
+        res.render('teamRoster.ejs', { team });
+    } catch (error) {
+        res.render('error.html', { error });
+    }
+};
+
+exports.addPlayerToTeam = async (req,res) => {
+    try{
+        const teamId = req.params.teamId;
+        const {firstName, lastName, age} = req.body;
+
+        //find the team by its ID
+        const team = await Team.findById(teamId);
+        if(!team){
+            return res.status(404).send('Team not found');
+        }
+
+        //Create a new player
+        const player = new Player({
+            firstName,
+            lastName,
+            age,
+
+        })
+
+        //Saves player to DB
+        await player.save();
+
+        //Adds player to the team's roster
+        team.players.push(player);
+        await team.save();
+
+        //Redirects back to the team roster page
+        res.redirect('/leagues/${team.leagueName}/teams/${teamId}/roster');
+
+    }catch (error) {
+        res.render('error.html', { error })
+    }
+}
