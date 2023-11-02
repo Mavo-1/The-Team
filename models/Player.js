@@ -19,7 +19,7 @@ const playerSchema = new Schema ({
         required: true,
     },
     contactNum: {
-        type:Number,
+        type: String,
         required: true,
     },
     position: String,

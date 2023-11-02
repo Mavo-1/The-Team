@@ -15,7 +15,7 @@ router.delete('/:leagueId', ensureAuth, leagueController.deleteLeague);
 router.get('/:leagueId/teams', ensureAuth, leagueController.getTeamsEJS);
 router.post('/:leagueId/teams', ensureAuth, leagueController.postTeamsEJS);
 router.get('/:teamId/roster', ensureAuth, leagueController.getTeamRosterEJS);
-router.post('/:leagueId/teams/:teamId/addplayer', ensureAuth, leagueController.addPlayerToTeam)
+router.post('/:teamId/roster', ensureAuth, leagueController.postTeamRosterEJS)
 
 
 

@@ -1,13 +1,14 @@
 const Team = require('../models/Team')
 const League = require('../models/League');
+const Player = require('../models/Player')
 
 exports.getDashEJS = async (req, res) => {
   if (req.user) {
     try {
       const leagueCount = await League.countDocuments();
       const teamCount = await Team.countDocuments();
-    //const playerCount = await Player.countDocuments();
-      res.render("admin-dash.ejs", { user: req.user, leagueCount, teamCount }); //add teamCount && playerCount later
+      const playerCount = await Player.countDocuments();
+      res.render("admin-dash.ejs", { user: req.user, leagueCount, teamCount, playerCount }); //add teamCount && playerCount later
     } catch (error) {
       res.render("error.html", { error });
     }

@@ -103,47 +103,64 @@ exports.postTeamsEJS = async (req, res) => {
 exports.getTeamRosterEJS = async (req, res) => {
     try {
         const teamId = req.params.teamId;
-        const team = await Team.findById(teamId).populate('players'); // Assuming the player field in Team is named 'players'
+
+        // Find the specified team by teamId
+        const team = await Team.findById(teamId);
         if (!team) {
             return res.status(404).send('Team not found');
         }
 
-        res.render('teamRoster.ejs', { team });
+        console.log('Team:', team); // Log the team object to check its content
+
+        // Query the Player collection to get the players associated with this team
+        const players = await Player.find({ team: team._id });
+
+        console.log('Players:', players); // Log the players array to check its content
+        // Render the view with both team and player data
+        res.render('teamRoster.ejs', { team, players });
     } catch (error) {
+        console.error('Error:', error)
         res.render('error.html', { error });
     }
 };
 
-exports.addPlayerToTeam = async (req,res) => {
+exports.postTeamRosterEJS = async (req,res) => {
     try{
-        const teamId = req.params.teamId;
-        const {firstName, lastName, age} = req.body;
-
-        //find the team by its ID
-        const team = await Team.findById(teamId);
-        if(!team){
+        
+        const team = await Team.findById(req.params.teamId)
+        if (!team) {
             return res.status(404).send('Team not found');
         }
+        const {firstName, lastName, age, dateOfBirth, contactNum, position, height, weight } = req.body;
 
         //Create a new player
         const player = new Player({
             firstName,
             lastName,
             age,
+            dateOfBirth,
+            contactNum,
+            position,
+            height,
+            weight,
+            team: team._id,
 
         })
-
+        console.log(req.body);
         //Saves player to DB
         await player.save();
-
-        //Adds player to the team's roster
+        
+        // Add the player to the team's roster
         team.players.push(player);
         await team.save();
-
+        console.log(player)
+        console.log(req.body);
+        
         //Redirects back to the team roster page
-        res.redirect('/leagues/${team.leagueName}/teams/${teamId}/roster');
-
+        res.redirect(`/leagues/${team._id}/roster`);
+        console.log(req.body);
     }catch (error) {
+        console.log('Error:', error);
         res.render('error.html', { error })
     }
 }
