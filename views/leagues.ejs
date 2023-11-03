@@ -1,55 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leagues</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class=" font-sans">
+
+<body class="font-sans">
     <%- include('partials/header') %>
-    <div class="min-h-screen >
+    <div class="min-h-screen">
         <main class="py-10">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold text-gray-900 mb-6">Leagues</h1>
 
                 <!-- List of Leagues -->
-                <div class="bg-white shadow overflow-hidden sm:rounded-md">
-                    <ul>
-                        <% leagues.forEach(league => { %>
-                            <li class="border-b border-gray-200">
-                                <div class="flex items-center justify-between px-4 py-3 sm:px-6">
-                                    <div class="text-sm leading-5 font-medium text-indigo-600">
-                                        <%= league.leagueName %>
-                                    </div>
-                                    <!-- Add a delete button that triggers a DELETE request -->
-                                    <form id="deleteForm" data-id="<%= league._id %>">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="delete-button text-red-600 hover:text-red-900">Delete</button>
+                <!-- List of Leagues in a table -->
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+    <table>
+        <thead>
+            <tr>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    League Name
+                </th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Sport
+                </th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Start Date
+                </th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    End Date
+                </th>
+                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% leagues.forEach(league => { %>
+                <tr>
+                    <td class="px-4 py-2"><%= league.leagueName %></td>
+                    <td class="px-4 py-2"><%= league.sport %></td>
+                    <td class="px-4 py-2"><%= league.startDate.toDateString() %></td>
+                    <td class="px-4 py-2"><%= league.endDate.toDateString() %></td>
+                    <td class="px-4 py-2">
+                        <form id="deleteForm" data-id="<%= league._id %>">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="delete-button text-red-600 hover:text-red-900">Delete</button>
+                        </form>
+                        <a href="/leagues/<%= league._id %>/teams" class="text-indigo-600 hover:text-indigo-900">View Teams</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
 
-                                    </form>
-                                
-
-                                    <!-- Add a link to view the teams for this league -->
-                                    <a href="/leagues/<%= league._id %>/teams" class="text-indigo-600 hover:text-indigo-900">View Teams</a>
-                                </div> 
-                            </li>
-                        <% }); %>
-                    </ul>
-                </div>
 
                 <!-- Add League Button -->
                 <div class="mt-6">
-                    <a href="/leagues/create" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add League</a>
+                    <a href="/leagues/create"
+                        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add
+                        League</a>
                 </div>
             </div>
         </main>
-        
     </div>
-        
 
-<%- include('partials/footer') %>
-    </div>
+    <%- include('partials/footer') %>
     <script src="/javascript/deleteLeague.js"></script>
 </body>
+
 </html>

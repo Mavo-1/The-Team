@@ -3,7 +3,10 @@ const League = require('../models/League');
 const Player = require('../models/Player')
 
 exports.getDashEJS = async (req, res) => {
-  if (req.user) {
+    
+    if (!req.user) {
+    res.redirect('/login');
+  }else{
     try {
       const leagueCount = await League.countDocuments();
       const teamCount = await Team.countDocuments();
