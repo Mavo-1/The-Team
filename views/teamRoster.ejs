@@ -8,8 +8,9 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="font-sans flex flex-col min-h-screen">
     <%- include('partials/header') %>
+    <div class="p-4 my-6 flex-grow">
         <!-- teamRoster.ejs -->
         <div class="my-6">
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Team Roster for <%= team.teamName %>
@@ -29,6 +30,7 @@
         <% if(team.players.length===0){%>
             <p>No players on roster.</p>
             <%}else {%>
+               
                 <table>
                     <thead>
                         <tr>
@@ -66,7 +68,7 @@
 
                     <!-- Add Player Button -->
                     <button id="addPlayerButton"
-                        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add
+                        class="bg-indigo-500 hover:bg-blue-950 text-white font-semibold py-2 px-4 rounded">Add
                         Player</button>
 
                     <!-- Add Player Form (Initially hidden) -->
@@ -130,6 +132,8 @@
                                 class="bg-red-500 text-white px-4 py-2 rounded mt-4">Close</button>
                         </div>
                     </div>
+                    
+                </div>
                     <%- include('partials/footer') %>
                         <script src="/javascript/addPlayer.js"></script>
 </body>

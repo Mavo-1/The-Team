@@ -110,12 +110,12 @@ exports.getTeamRosterEJS = async (req, res) => {
             return res.status(404).send('Team not found');
         }
 
-        console.log('Team:', team); // Log the team object to check its content
+        
 
         // Query the Player collection to get the players associated with this team
         const players = await Player.find({ team: team._id });
 
-        console.log('Players:', players); // Log the players array to check its content
+        // Log the players array to check its content
         // Render the view with both team and player data
         res.render('teamRoster.ejs', { team, players });
     } catch (error) {
