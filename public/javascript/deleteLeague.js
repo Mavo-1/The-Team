@@ -1,24 +1,35 @@
 document.querySelectorAll('.delete-button').forEach((button) => {
     button.addEventListener('click', (event) => {
-        const isConfirmed = window.confirm('Are you sure you want to delete this league?')
-    
-   if (isConfirmed) {
-            const form = event.target.closest('form');
-            const leagueId = form.getAttribute('data-id');
-            
+        // Prevent the default click behavior (which is a GET request)
+        event.preventDefault();
+
+        const form = event.target.closest('form');
+        const leagueId = form.getAttribute('data-id');
+
+        // Show the confirmation modal
+        const confirmationModal = document.getElementById('confirmationModal');
+        confirmationModal.classList.remove('hidden');
+
+        // Handle "Confirm" button click
+        document.getElementById('confirmButton').addEventListener('click', () => {
             fetch(`/leagues/${leagueId}`, {
                 method: 'DELETE',
             })
             .then(() => {
+                // Close the modal
+                confirmationModal.classList.add('hidden');
                 // Reload the page or update the league list without reloading
                 window.location.reload(); // This refreshes the page
             })
             .catch((error) => {
                 console.error('Error deleting league:', error);
             });
-        } else {
-            // If the user cancels, prevent the default form submission
-            event.preventDefault();
-        }
+        });
+
+        // Handle "Cancel" button click
+        document.getElementById('cancelButton').addEventListener('click', () => {
+            // Close the modal without making a DELETE request
+            confirmationModal.classList.add('hidden');
+        });
     });
 });
