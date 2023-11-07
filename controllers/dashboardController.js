@@ -29,12 +29,6 @@ exports.getStandingsEJS = (req,res)=> {
 }
 
 
-//Function to render the Schedule page
-exports.getScheduleEJS = (req,res)=> {
-    res.render('schedules.ejs') //{schedulesData} replaces with actually league data if you have it
-}
-
-
 //Function to render the practice page
 exports.getPracticesEJS = (req,res)=> {
     res.render('practices.ejs') //{practiceData} replaces with actually league data if you have it

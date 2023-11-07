@@ -1,13 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.tailwindcss.com/2.2.16/tailwind.min.css"
+      rel="stylesheet"
+    />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('partials/header') %>
-    <h1>Schedule</h1>
-</body>
-</html>l
+    <h1 class="flex justify-center font-semibold mb-4 p-4">Schedule</h1>
+
+    <!-- Search Bar to Filter Games -->
+    <div class="flex justify-end p-4 items-center space-x-2">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search by location, date, league, or team"
+        class="border p-2 rounded-lg"
+      />
+      <button
+        id="searchButton"
+        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+      >
+        Search
+      </button>
+    </div>
+
+    <!-- List of Games -->
+    <ul id="gameList" class="mt-4 space-y-4">
+      <% games.forEach(game => { %>
+      <li class="border p-4 rounded-lg">
+        <strong><%= game.date %> - <%= game.time %></strong>
+        <p class="mt-2">Location: <%= game.location %></p>
+        <p>Home Team: <%= game.homeTeam %></p>
+        <p>Away Team: <%= game.awayTeam %></p>
+        <p>
+          Home Score: <%= game.homeScore !== undefined ? game.homeScore : 'N/A'
+          %>
+        </p>
+        <p>
+          Away Score: <%= game.awayScore !== undefined ? game.awayScore : 'N/A'
+          %>
+        </p>
+
+        <div class="mt-2 space-x-2">
+          <button
+            class="edit bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+            data-id="<%= game._id %>"
+          >
+            Edit
+          </button>
+          <button
+            class="delete bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
+            data-id="<%= game._id %>"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+
+    <!-- Add Game Button -->
+    <div class="mt-6">
+      <button
+        id="addGameButton"
+        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+      >
+        Add Game
+      </button>
+    </div>
+
+    <!-- Add Game Form (Initially hidden) -->
+    <div
+      id="addGameModal"
+      class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75"
+    >
+      <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
+        <form id="addGameForm" action="/schedule" method="POST">
+          <h2 class="text-xl font-semibold mb-2">Add Game</h2>
+          <div class="mb-4">
+            <label for="date" class="block text-gray-700 text-sm font-bold mb-2"
+              >Date</label
+            >
+            <input
+              type="text"
+              id="date"
+              name="date"
+              class="w-full border rounded py-2 px-3"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="time" class="block text-gray-700 text-sm font-bold mb-2"
+              >Time</label
+            >
+            <input
+              type="text"
+              id="time"
+              name="time"
+              class="w-full border rounded py-2 px-3"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="location"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Location</label
+            >
+            <input
+              type="text"
+              id="location"
+              name="location"
+              class="w-full border rounded py-2 px-3"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="homeTeam"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Home Team</label
+            >
+            <input
+              type="text"
+              id="homeTeam"
+              name="homeTeam"
+              class="w-full border rounded py-2 px-3"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="homeScore"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Home Score</label
+            >
+            <input
+              type="text"
+              id="homeScore"
+              name="homeScore"
+              class="w-full border rounded py-2 px-3"
+              
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="awayTeam"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Away Team</label
+            >
+            <input
+              type="text"
+              id="awayTeam"
+              name="awayTeam"
+              class="w-full border rounded py-2 px-3"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="awayScore"
+              class="block text-gray-700 text-sm font-bold mb-2"
+              >Away Score</label
+            >
+            <input
+              type="text"
+              id="awayScore"
+              name="awayScore"
+              class="w-full border rounded py-2 px-3"
+              
+            />
+          </div>
+          <button
+            type="submit"
+            id="submitGameButton"
+            class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+          >
+            Add Game
+          </button>
+        </form>
+        <button
+          id="closeGameModalButton"
+          class="bg-red-500 text-white px-4 py-2 rounded mt-4"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script src="/javascript/schedule.js"></script>
+  </body>
+</html>

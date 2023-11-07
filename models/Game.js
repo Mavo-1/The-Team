@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema} = mongoose;
 
-const scheduleSchema = new Schema({
+const gameSchema = new Schema({
     //date,time,location, awayteam, hometeam, awayscore, homescore
     date: {
         type: Date,
@@ -16,13 +16,11 @@ const scheduleSchema = new Schema({
         required: true,
     },
     homeTeam: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Team',
+        type: String,
         required: true,
     },
     awayTeam: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Team',
+        type: String,
         required: true,
     },
     homeScore: {
@@ -34,3 +32,7 @@ const scheduleSchema = new Schema({
         default: 0,
     },
 })
+
+const Game = mongoose.model('Game', gameSchema);
+
+module.exports = Game;

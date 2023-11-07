@@ -51,19 +51,21 @@ app.use(
 
 
 //Passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
-app.use(flash())
-
-const homeRoutes= require('./routes/home')
-const dashRoutes = require('./routes/dashboard')
-const leagueRoutes = require('./routes/leagueRoutes')
+const homeRoutes= require('./routes/home');
+const dashRoutes = require('./routes/dashboard');
+const leagueRoutes = require('./routes/leagueRoutes');
+const scheduleRoutes = require('./routes/scheduleRoutes');
 
 //Routes
-app.use('/', homeRoutes)
-app.use('/dashboard',dashRoutes)
-app.use('/leagues',leagueRoutes)
+app.use('/', homeRoutes);
+app.use('/dashboard',dashRoutes);
+app.use('/leagues',leagueRoutes);
+app.use('/schedule',scheduleRoutes);
+
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
