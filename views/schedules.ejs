@@ -11,61 +11,11 @@
   </head>
   <body>
     <%- include('partials/header') %>
-    <h1 class="flex justify-center font-semibold mb-4 p-4">Schedule</h1>
-
-    <!-- Search Bar to Filter Games -->
-    <div class="flex justify-end p-4 items-center space-x-2">
-      <input
-        type="text"
-        id="search"
-        placeholder="Search by location, date, league, or team"
-        class="border p-2 rounded-lg"
-      />
-      <button
-        id="searchButton"
-        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-      >
-        Search
-      </button>
-    </div>
-
-    <!-- List of Games -->
-    <ul id="gameList" class="mt-4 space-y-4">
-      <% games.forEach(game => { %>
-      <li class="border p-4 rounded-lg">
-        <strong><%= game.date %> - <%= game.time %></strong>
-        <p class="mt-2">Location: <%= game.location %></p>
-        <p>Home Team: <%= game.homeTeam %></p>
-        <p>Away Team: <%= game.awayTeam %></p>
-        <p>
-          Home Score: <%= game.homeScore !== undefined ? game.homeScore : 'N/A'
-          %>
-        </p>
-        <p>
-          Away Score: <%= game.awayScore !== undefined ? game.awayScore : 'N/A'
-          %>
-        </p>
-
-        <div class="mt-2 space-x-2">
-          <button
-            class="edit bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-            data-id="<%= game._id %>"
-          >
-            Edit
-          </button>
-          <button
-            class="delete bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
-            data-id="<%= game._id %>"
-          >
-            Delete
-          </button>
-        </div>
-      </li>
-      <% }); %>
-    </ul>
+    <h1 class="text-3xl font-semibold text-center mt-8">Schedule</h1>
 
     <!-- Add Game Button -->
-    <div class="mt-6">
+    <div class="flex justify-between p-4 items-center">
+    <div class="p-5 mt-4">
       <button
         id="addGameButton"
         class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
@@ -192,6 +142,103 @@
         </button>
       </div>
     </div>
+
+    <!-- Search Bar to Filter Games -->
+    <div class="flex justify-end p-4 items-center space-x-2">
+      <input
+        type="text"
+        id="search"
+        placeholder="location,date,league,team"
+        class="border p-2 rounded-lg"
+      />
+      <button
+        id="searchButton"
+        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+      >
+        Search
+      </button>
+    </div>
+
+  </div>  
+
+    <!-- List of Games -->
+    <ul id="gameList" class="mt-4 space-y-4">
+      <% game.forEach(game => { %>
+      <li class="border p-4 rounded-lg">
+        <strong><%= game.date %> - <%= game.time %></strong>
+        <p class="mt-2">Location: <%= game.location %></p>
+        <p>Home Team: <%= game.homeTeam %></p>
+        <p>Away Team: <%= game.awayTeam %></p>
+        <p>
+          Home Score: <%= game.homeScore !== undefined ? game.homeScore : 'N/A'
+          %>
+        </p>
+        <p>
+          Away Score: <%= game.awayScore !== undefined ? game.awayScore : 'N/A'
+          %>
+        </p>
+
+        <div class="mt-2 space-x-2">
+          <button
+            id="showEditModal"
+            class="edit bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+            data-id="<%= game._id %>"
+          >
+            Edit
+          </button>
+          <button
+            class="delete bg-red-500 hover-bg-red-700 text-white font-semibold py-2 px-4 rounded"
+            data-id="<%= game._id %>"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+
+    <!-- Edit Game Modal (Initially hidden) -->
+<!-- Edit Game Modal -->
+<div id="editGameModal" class="hidden">
+  <form id="editGameForm" action="/schedule/update" method="PUT">
+    <input type="hidden" id="editGameId" name="id" />
+    <div class="mb-4">
+      <label for="date">Date:</label>
+      <input type="text" id="editDate" name="date" required />
+    </div>
+    <div class="mb-4">
+      <label for="location">Location:</label>
+      <input type="text" id="editLocation" name="location" required />
+    </div>
+    <div class="mb-4">
+      <label for="time">Time:</label>
+      <input type="text" id="editTime" name="time" required />
+    </div>
+    <div class="mb-4">
+      <label for="homeTeam">Home Team:</label>
+      <input type="text" id="editHomeTeam" name="homeTeam" required />
+    </div>
+    <div class="mb-4">
+      <label for="awayTeam">Away Team:</label>
+      <input type="text" id="editAwayTeam" name="awayTeam" required />
+    </div>
+    <div class="mb-4">
+      <label for="homeScore">Home Score:</label>
+      <input type="text" id="editHomeScore" name="homeScore" required />
+    </div>
+    <div class="mb-4">
+      <label for="awayScore">Away Score:</label>
+      <input type="text" id="editAwayScore" name="awayScore" required />
+    </div>
+    <button type="button" id="submitEditGameButton" onclick="updateGame()">Save</button>
+    <button type="button" id="closeEditGameModalButton" onclick="closeEditModal()">Close</button>
+  </form>
+</div>
+</div>
+
+
+    
+    
 
     <script src="/javascript/schedule.js"></script>
   </body>

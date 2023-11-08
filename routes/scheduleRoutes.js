@@ -8,11 +8,12 @@ router.get('/', ensureAuth, scheduleController.getScheduleEJS);
 //Create a new game
 router.post('/', ensureAuth, scheduleController.addGame);
 
-//Update an existing game(if needed)
-router.put('/schedule/:id', ensureAuth, scheduleController.updateGame);
 
-//Get a list of games (for api use)
-router.get('/games',ensureAuth, scheduleController.getGames);
+// Update a game
+router.put('/update/:id', ensureAuth, scheduleController.updateGame);
+
+// Delete a game
+router.delete('/delete/:id', ensureAuth, scheduleController.deleteGame);
 
 //Get games by date
 router.get("/gamesByDate", ensureAuth, scheduleController.getGamesByDate);
