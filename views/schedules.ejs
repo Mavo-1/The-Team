@@ -160,81 +160,77 @@
     </div>
 
   </div>  
+<!-- List of Games -->
+<ul id="gameList" class="mt-4 space-y-4">
+  <% game.forEach(game => { %>
+    <li class="border p-4 rounded-lg">
+      <strong><%= game.date %> - <%= game.time %></strong>
+      <p class="mt-2">Location: <%= game.location %></p>
+      <p>Home Team: <%= game.homeTeam %></p>
+      <p>Away Team: <%= game.awayTeam %></p>
+      <p>Home Score: <%= game.homeScore !== undefined ? game.homeScore : 'N/A' %></p>
+      <p>Away Score: <%= game.awayScore !== undefined ? game.awayScore : 'N/A' %></p>
 
-    <!-- List of Games -->
-    <ul id="gameList" class="mt-4 space-y-4">
-      <% game.forEach(game => { %>
-      <li class="border p-4 rounded-lg">
-        <strong><%= game.date %> - <%= game.time %></strong>
-        <p class="mt-2">Location: <%= game.location %></p>
-        <p>Home Team: <%= game.homeTeam %></p>
-        <p>Away Team: <%= game.awayTeam %></p>
-        <p>
-          Home Score: <%= game.homeScore !== undefined ? game.homeScore : 'N/A'
-          %>
-        </p>
-        <p>
-          Away Score: <%= game.awayScore !== undefined ? game.awayScore : 'N/A'
-          %>
-        </p>
+      <div class="mt-2 space-x-2">
+        <button class="edit-button bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded" data-id="<%= game._id %>">
+          Edit
+        </button>
+        <button class="delete bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded" data-id="<%= game._id %>">
+          Delete
+        </button>
+      </div>
+    </li>
+  <% }); %>
+</ul>
 
-        <div class="mt-2 space-x-2">
-          <button
-            id="showEditModal"
-            class="edit bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-            data-id="<%= game._id %>"
-          >
-            Edit
-          </button>
-          <button
-            class="delete bg-red-500 hover-bg-red-700 text-white font-semibold py-2 px-4 rounded"
-            data-id="<%= game._id %>"
-          >
-            Delete
-          </button>
-        </div>
-      </li>
-      <% }); %>
-    </ul>
-
-    <!-- Edit Game Modal (Initially hidden) -->
-<!-- Edit Game Modal -->
-<div id="showEditModal" class="hidden">
-  <form id="editGameForm" action="/schedule/update" method="PUT">
+<!-- Edit Game Modal (Initially hidden) -->
+<div id="editGameModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
+  <form id="editGameForm" action="/schedule/update" method="PUT" class="bg-white p-8 rounded-lg max-w-screen-md">
     <input type="hidden" id="editGameId" name="id" />
+
     <div class="mb-4">
-      <label for="date">Date:</label>
-      <input type="text" id="editDate" name="date" required />
+      <label for="editDate" class="block text-gray-700 text-sm font-bold mb-2">Date:</label>
+      <input type="text" id="editDate" name="date" class="w-full border rounded py-2 px-3" required />
     </div>
+
     <div class="mb-4">
-      <label for="location">Location:</label>
-      <input type="text" id="editLocation" name="location" required />
+      <label for="editLocation" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+      <input type="text" id="editLocation" name="location" class="w-full border rounded py-2 px-3" required />
     </div>
+
     <div class="mb-4">
-      <label for="time">Time:</label>
-      <input type="text" id="editTime" name="time" required />
+      <label for="editTime" class="block text-gray-700 text-sm font-bold mb-2">Time:</label>
+      <input type="text" id="editTime" name="time" class="w-full border rounded py-2 px-3" required />
     </div>
+
     <div class="mb-4">
-      <label for="homeTeam">Home Team:</label>
-      <input type="text" id="editHomeTeam" name="homeTeam" required />
+      <label for="editHomeTeam" class="block text-gray-700 text-sm font-bold mb-2">Home Team:</label>
+      <input type="text" id="editHomeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" required />
     </div>
+
     <div class="mb-4">
-      <label for="awayTeam">Away Team:</label>
-      <input type="text" id="editAwayTeam" name="awayTeam" required />
+      <label for="editAwayTeam" class="block text-gray-700 text-sm font-bold mb-2">Away Team:</label>
+      <input type="text" id="editAwayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" required />
     </div>
+
     <div class="mb-4">
-      <label for="homeScore">Home Score:</label>
-      <input type="text" id="editHomeScore" name="homeScore" required />
+      <label for="editHomeScore" class="block text-gray-700 text-sm font-bold mb-2">Home Score:</label>
+      <input type="text" id="editHomeScore" name="homeScore" class="w-full border rounded py-2 px-3" required />
     </div>
+
     <div class="mb-4">
-      <label for="awayScore">Away Score:</label>
-      <input type="text" id="editAwayScore" name="awayScore" required />
+      <label for="editAwayScore" class="block text-gray-700 text-sm font-bold mb-2">Away Score:</label>
+      <input type="text" id="editAwayScore" name="awayScore" class="w-full border rounded py-2 px-3" required />
     </div>
-    <button type="button" id="submitEditGameButton" onclick="updateGame()">Save</button>
-    <button type="button" id="closeEditGameModalButton" onclick="closeEditModal()">Close</button>
+
+    <button type="button" id="submitEditGameButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Save</button>
+    <button type="button" id="closeEditGameModalButton" class="bg-red-500 text-white px-4 py-2 rounded mt-4">Close</button>
   </form>
 </div>
-</div>
+
+
+  
+
 
 
     
