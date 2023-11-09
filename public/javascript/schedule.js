@@ -45,8 +45,4 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('closeEditGameModalButton').addEventListener('click', function () {
     editGameModal.classList.add('hidden');
   });
-
-  // You can add your code for searching games here if needed
-
-  // You can also add code for updating the game list if necessary
 });
