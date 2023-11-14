@@ -1,241 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.tailwindcss.com/2.2.16/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <%- include('partials/header') %>
-    <h1 class="text-4xl font-semibold text-center mt-8">Schedule</h1>
 
-    <!-- Add Game Button -->
-    <div class="flex justify-between p-4 items-center">
-    <div class="p-5 mt-4">
-      <button
-        id="addGameButton"
-        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-      >
-        Add Game
-      </button>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-    <!-- Add Game Form (Initially hidden) -->
-    <div
-      id="addGameModal"
-      class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75"
-    >
-      <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
-        <form id="addGameForm" action="/schedule" method="POST">
-          <h2 class="text-xl font-semibold mb-2">Add Game</h2>
-          <div class="mb-4">
-            <label for="date" class="block text-gray-700 text-sm font-bold mb-2"
-              >Date</label
-            >
-            <input
-              type="text"
-              id="date"
-              name="date"
-              class="w-full border rounded py-2 px-3"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="time" class="block text-gray-700 text-sm font-bold mb-2"
-              >Time</label
-            >
-            <input
-              type="text"
-              id="time"
-              name="time"
-              class="w-full border rounded py-2 px-3"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="location"
-              class="block text-gray-700 text-sm font-bold mb-2"
-              >Location</label
-            >
-            <input
-              type="text"
-              id="location"
-              name="location"
-              class="w-full border rounded py-2 px-3"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="homeTeam"
-              class="block text-gray-700 text-sm font-bold mb-2"
-              >Home Team</label
-            >
-            <input
-              type="text"
-              id="homeTeam"
-              name="homeTeam"
-              class="w-full border rounded py-2 px-3"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="homeScore"
-              class="block text-gray-700 text-sm font-bold mb-2"
-              >Home Score</label
-            >
-            <input
-              type="text"
-              id="homeScore"
-              name="homeScore"
-              class="w-full border rounded py-2 px-3"
-              
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="awayTeam"
-              class="block text-gray-700 text-sm font-bold mb-2"
-              >Away Team</label
-            >
-            <input
-              type="text"
-              id="awayTeam"
-              name="awayTeam"
-              class="w-full border rounded py-2 px-3"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              for="awayScore"
-              class="block text-gray-700 text-sm font-bold mb-2"
-              >Away Score</label
-            >
-            <input
-              type="text"
-              id="awayScore"
-              name="awayScore"
-              class="w-full border rounded py-2 px-3"
-              
-            />
-          </div>
-          <button
-            type="submit"
-            id="submitGameButton"
-            class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-          >
-            Add Game
-          </button>
-        </form>
-        <button
-          id="closeGameModalButton"
-          class="bg-red-500 text-white px-4 py-2 rounded mt-4"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-
+<body class="bg-gray-100 font-sans">
+  <%- include('partials/header') %>
     <!-- Search Bar to Filter Games -->
     <div class="flex justify-end p-4 items-center space-x-2">
-      <input
-        type="text"
-        id="search"
-        placeholder="location,date,league,team"
-        class="border p-2 rounded-lg"
-      />
-      <button
-        id="searchButton"
-        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
-      >
+      <input type="text" id="search" placeholder="location,date,league,team" class="border p-2 rounded-lg" />
+      <button id="searchButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
         Search
       </button>
     </div>
+    <div class="min-h-screen">
+      <main>
+        <h1 class="mb-4 text-3xl font-medium text-center mt-4 text-blue-950">
+          Schedule
+        </h1>
 
-  </div>  
-<!-- List of Games -->
-<ul id="gameList" class="mt-4 space-y-4">
-  <% game.forEach(game => { %>
-    <li class="border p-4 rounded-lg">
-      <strong><%= game.date %> - <%= game.time %></strong>
-      <p class="mt-2">Location: <%= game.location %></p>
-      <p>Home Team: <%= game.homeTeam %></p>
-      <p>Away Team: <%= game.awayTeam %></p>
-      <p>Home Score: <%= game.homeScore !== undefined ? game.homeScore : 'N/A' %></p>
-      <p>Away Score: <%= game.awayScore !== undefined ? game.awayScore : 'N/A' %></p>
+        <!-- List of Games -->
+        <!-- List of Games in a table -->
 
-      <div class="mt-2 space-x-2">
-        <button class="edit-button bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded" data-id="<%= game._id %>">
-          Edit
-        </button>
-        <button class="delete bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded" data-id="<%= game._id %>">
-          Delete
-        </button>
+        <table class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg">
+          <thead>
+            <tr class="py-4 my-4 text-left font-medium text-blue-950 tracking-wider border-b border-gray-300">
+              <th class="px-4 py-2">Date & Time</th>
+              <th class="px-4 py-2">Location</th>
+              <th class="px-4 py-2">Home Team</th>
+              <th class="px-4 py-2">Away Team</th>
+              <th class="px-4 py-2">Home Score</th>
+              <th class="px-4 py-2">Away Score</th>
+              <th class="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% games.forEach(game=> { %>
+              <tr class="uppercase hover:bg-gray-200">
+                <td class="px-4 py-2">
+                  <%= `${game.date} - ${game.time}` %>
+                </td>
+                <td class="px-4 py-2">
+                  <%= game.location %>
+                </td>
+                <td class="px-4 py-2">
+                  <%= game.homeTeam %>
+                </td>
+                <td class="px-4 py-2">
+                  <%= game.awayTeam %>
+                </td>
+                <td class="px-4 py-2">
+                  <%= game.homeScore !==undefined ? game.homeScore : 'N/A' %>
+                </td>
+                <td class="px-4 py-2">
+                  <%= game.awayScore !==undefined ? game.awayScore : 'N/A' %>
+                </td>
+                <td class="px-4 py-2">
+                  <button id="editGameButton_<%= game._id %>"
+                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+                    data-id="<%= game._id %>">
+                    Edit
+                  </button>
+                  <button class="delete bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
+                    data-id="<%= game._id %>">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              <% }); %>
+          </tbody>
+
+          <!-- Add Edit Game Modal (Initially hidden) -->
+        <div id="editGameModal"
+        class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
+        <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
+          <form id="addGameForm" action="" method="">
+            <h2 class="text-xl font-semibold mb-2">Add Game</h2>
+            <div class="mb-4">
+              <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
+              <input type="text" id="date" name="date" class="w-full border rounded py-2 px-3" required />
+            </div>
+            <div class="mb-4">
+              <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
+              <input type="text" id="time" name="time" class="w-full border rounded py-2 px-3" required />
+            </div>
+            <div class="mb-4">
+              <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
+              <input type="text" id="location" name="location" class="w-full border rounded py-2 px-3" required />
+            </div>
+            <div class="mb-4">
+              <label for="homeTeam" class="block text-gray-700 text-sm font-bold mb-2">Home Team</label>
+              <input type="text" id="homeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" required />
+            </div>
+            <div class="mb-4">
+              <label for="homeScore" class="block text-gray-700 text-sm font-bold mb-2">Home Score</label>
+              <input type="text" id="homeScore" name="homeScore" class="w-full border rounded py-2 px-3" />
+            </div>
+            <div class="mb-4">
+              <label for="awayTeam" class="block text-gray-700 text-sm font-bold mb-2">Away Team</label>
+              <input type="text" id="awayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" required />
+            </div>
+            <div class="mb-4">
+              <label for="awayScore" class="block text-gray-700 text-sm font-bold mb-2">Away Score</label>
+              <input type="text" id="awayScore" name="awayScore" class="w-full border rounded py-2 px-3" />
+            </div>
+            <button type="submit" id="submitGameButton"
+              class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
+              Add Game
+            </button>
+          </form>
+          <button id="closeEditModal" class="bg-red-500 text-white px-4 py-2 rounded mt-4">
+            Close
+          </button>
+        </div>
       </div>
-    </li>
-  <% }); %>
-</ul>
 
-<!-- Edit Game Modal (Initially hidden) -->
-<div id="editGameModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
-  <form id="editGameForm" action="/schedule/update" method="PUT" class="bg-white p-8 rounded-lg max-w-screen-md">
-    <input type="hidden" id="editGameId" name="id" />
+          <!-- Add Game Button -->
+          <tr>
+            <td colspan="7" class="text-center">
+              <div class="fixed bottom-10 right-0 p-6">
+                <button id="addGameButton"
+                  class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
+                  Add Game
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-    <div class="mb-4">
-      <label for="editDate" class="block text-gray-700 text-sm font-bold mb-2">Date:</label>
-      <input type="text" id="editDate" name="date" class="w-full border rounded py-2 px-3" required />
+
+
+        <!-- Add Game Form (Initially hidden) -->
+        <div id="addGameModal"
+          class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
+          <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
+            <form id="addGameForm" action="/schedule" method="POST">
+              <h2 class="text-xl font-semibold mb-2">Add Game</h2>
+              <div class="mb-4">
+                <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
+                <input type="text" id="date" name="date" class="w-full border rounded py-2 px-3" required />
+              </div>
+              <div class="mb-4">
+                <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
+                <input type="text" id="time" name="time" class="w-full border rounded py-2 px-3" required />
+              </div>
+              <div class="mb-4">
+                <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
+                <input type="text" id="location" name="location" class="w-full border rounded py-2 px-3" required />
+              </div>
+              <div class="mb-4">
+                <label for="homeTeam" class="block text-gray-700 text-sm font-bold mb-2">Home Team</label>
+                <input type="text" id="homeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" required />
+              </div>
+              <div class="mb-4">
+                <label for="homeScore" class="block text-gray-700 text-sm font-bold mb-2">Home Score</label>
+                <input type="text" id="homeScore" name="homeScore" class="w-full border rounded py-2 px-3" />
+              </div>
+              <div class="mb-4">
+                <label for="awayTeam" class="block text-gray-700 text-sm font-bold mb-2">Away Team</label>
+                <input type="text" id="awayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" required />
+              </div>
+              <div class="mb-4">
+                <label for="awayScore" class="block text-gray-700 text-sm font-bold mb-2">Away Score</label>
+                <input type="text" id="awayScore" name="awayScore" class="w-full border rounded py-2 px-3" />
+              </div>
+              <button type="submit" id="submitGameButton"
+                class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
+                Add Game
+              </button>
+            </form>
+            <button id="closeAddGameModal" class="bg-red-500 text-white px-4 py-2 rounded mt-4">
+              Close
+            </button>
+          </div>
+        </div>
     </div>
 
-    <div class="mb-4">
-      <label for="editLocation" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
-      <input type="text" id="editLocation" name="location" class="w-full border rounded py-2 px-3" required />
+
+    </main>
     </div>
+    <%- include('partials/footer') %>
+      <script src="/javascript/schedule.js"></script>
+</body>
 
-    <div class="mb-4">
-      <label for="editTime" class="block text-gray-700 text-sm font-bold mb-2">Time:</label>
-      <input type="text" id="editTime" name="time" class="w-full border rounded py-2 px-3" required />
-    </div>
-
-    <div class="mb-4">
-      <label for="editHomeTeam" class="block text-gray-700 text-sm font-bold mb-2">Home Team:</label>
-      <input type="text" id="editHomeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" required />
-    </div>
-
-    <div class="mb-4">
-      <label for="editAwayTeam" class="block text-gray-700 text-sm font-bold mb-2">Away Team:</label>
-      <input type="text" id="editAwayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" required />
-    </div>
-
-    <div class="mb-4">
-      <label for="editHomeScore" class="block text-gray-700 text-sm font-bold mb-2">Home Score:</label>
-      <input type="text" id="editHomeScore" name="homeScore" class="w-full border rounded py-2 px-3" required />
-    </div>
-
-    <div class="mb-4">
-      <label for="editAwayScore" class="block text-gray-700 text-sm font-bold mb-2">Away Score:</label>
-      <input type="text" id="editAwayScore" name="awayScore" class="w-full border rounded py-2 px-3" required />
-    </div>
-
-    <button type="button" id="submitEditGameButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Save</button>
-    <button type="button" id="closeEditGameModalButton" class="bg-red-500 text-white px-4 py-2 rounded mt-4">Close</button>
-  </form>
-</div>
-
-
-  
-
-
-
-    
-    
-
-    <script src="/javascript/schedule.js"></script>
-  </body>
 </html>
