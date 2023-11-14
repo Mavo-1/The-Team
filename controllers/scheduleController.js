@@ -4,10 +4,10 @@ const Game = require('../models/Game');
 exports.getScheduleEJS = async (req,res)=> {
     try{
         //Fetch the games data from DB 
-        const game = await Game.find();
+        const games = await Game.find();
 
         //Render scheudle page and pass games data
-        res.render('schedules.ejs', {game});
+        res.render('schedules.ejs', {games});
     }catch (error){
         res.render('error.html', { error })
     }
