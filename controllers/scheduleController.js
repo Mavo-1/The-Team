@@ -1,5 +1,5 @@
 const Game = require('../models/Game');
-const League = require('../models/League')
+
 
 //Function to render the Schedule page
 exports.getScheduleEJS = async (req,res)=> {
@@ -109,9 +109,11 @@ exports.deleteGame = async (req, res) => {
     //Find the game by ID and remove it from the database
     await Game.findByIdAndRemove(gameId);
 
-    //Redirect back to the schedule page
+    //Fetch the games data from DB 
+    const games = await Game.find();
 
-    res.redirect('/schedules')
+    //Render scheudle page and pass games data
+    res.render('schedules.ejs', {games});
   } catch (error) {
     res.status(500).json({ error: 'Error deleting the game' });
   }

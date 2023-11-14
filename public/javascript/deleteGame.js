@@ -22,7 +22,7 @@ document.querySelectorAll('.delete-button').forEach((button) => {
                 window.location.reload(); // This refreshes the page
             })
             .catch((error) => {
-                console.error('Error deleting game:', error);
+                console.error('Error deleting league:', error);
             });
         });
 
