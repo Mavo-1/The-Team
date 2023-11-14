@@ -42,7 +42,9 @@
             <% games.forEach(game=> { %>
               <tr class="uppercase hover:bg-gray-200">
                 <td class="px-4 py-2">
-                  <%= `${game.date} - ${game.time}` %>
+                  <%= new Date(game.date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) %> <%= new Date(`1970-01-01T${game.time}:00.000Z`).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %>
+
+
                 </td>
                 <td class="px-4 py-2">
                   <%= game.location %>
@@ -86,7 +88,7 @@
             </div>
             <div class="mb-4">
               <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
-              <input type="text" id="time" name="time" class="w-full border rounded py-2 px-3" required />
+              <input type="time" id="time" name="time" class="w-full border rounded py-2 px-3" required />
             </div>
             <div class="mb-4">
               <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
@@ -146,7 +148,7 @@
               </div>
               <div class="mb-4">
                 <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
-                <input type="text" id="time" name="time" class="w-full border rounded py-2 px-3" required />
+                <input type="time" id="time" name="time" class="w-full border rounded py-2 px-3" required />
               </div>
               <div class="mb-4">
                 <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
