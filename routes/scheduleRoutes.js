@@ -13,7 +13,7 @@ router.post('/', ensureAuth, scheduleController.addGame);
 router.put('/update/:id', ensureAuth, scheduleController.updateGame);
 
 // Delete a game
-router.delete('/delete/:id', ensureAuth, scheduleController.deleteGame);
+router.delete('/:gameid', ensureAuth, scheduleController.deleteGame);
 
 //Get games by date
 router.get("/gamesByDate", ensureAuth, scheduleController.getGamesByDate);

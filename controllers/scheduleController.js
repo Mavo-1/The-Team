@@ -1,4 +1,5 @@
 const Game = require('../models/Game');
+const League = require('../models/League')
 
 //Function to render the Schedule page
 exports.getScheduleEJS = async (req,res)=> {
@@ -103,13 +104,14 @@ exports.addGame = async (req, res) => {
 // Delete the game
 exports.deleteGame = async (req, res) => {
   try {
-    const game = await Game.findByIdAndRemove(req.params.id);
+    const gameId = req.params.gameId;
 
-    if (!game) {
-      return res.status(404).json({ error: 'Game not found' });
-    }
+    //Find the game by ID and remove it from the database
+    await Game.findByIdAndRemove(gameId);
 
-    res.status(204).send();
+    //Redirect back to the schedule page
+
+    res.redirect('/schedules')
   } catch (error) {
     res.status(500).json({ error: 'Error deleting the game' });
   }

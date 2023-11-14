@@ -67,10 +67,15 @@
                     data-id="<%= game._id %>">
                     Edit
                   </button>
-                  <button class="delete bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
-                    data-id="<%= game._id %>">
-                    Delete
-                  </button>
+                  <form id="deleteForm" data-id="<%= game._id %>">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button
+                      type="submit"
+                      class="delete-button text-red-600 hover:text-red-900"
+                    >
+                      Delete
+                    </button>
+                  </form>
                 </td>
               </tr>
               <% }); %>
@@ -182,9 +187,36 @@
         </div>
     </div>
 
+    <!--Delete confirmation -->
+    <div
+    id="confirmationModal"
+    class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75"
+  >
+    <div
+      class="modal-container bg-white w-1/2 max-w-md mx-auto rounded shadow-lg p-4"
+    >
+      <h2 class="text-xl font-semibold mb-4">Confirm Deletion</h2>
+      <p>Are you sure you want to delete this game?</p>
+      <div class="mt-4 flex justify-end">
+        <button
+          id="cancelButton"
+          class="mr-4 px-3 py-2 bg-gray-200 text-gray-700 font-medium rounded"
+        >
+          Cancel
+        </button>
+        <button
+          id="confirmButton"
+          class="px-3 py-2 bg-red-500 text-white font-semibold rounded"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+  
 
     </main>
-    </div>
+  </div>
     <%- include('partials/footer') %>
       <script src="/javascript/schedule.js"></script>
 </body>

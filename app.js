@@ -64,7 +64,7 @@ const scheduleRoutes = require('./routes/scheduleRoutes');
 app.use('/', homeRoutes);
 app.use('/dashboard',dashRoutes);
 app.use('/leagues',leagueRoutes);
-app.use('/schedule',scheduleRoutes);
+app.use('/schedules',scheduleRoutes);
 
 
 app.use((err, req, res, next) => {
