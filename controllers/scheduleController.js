@@ -36,7 +36,7 @@ exports.addGame = async (req, res) => {
   
       await game.save();
   
-      res.redirect('/schedule')
+      res.redirect('/schedules')
     } catch (error) {
       res.status(500).json({ error: 'Error creating the game' });
     }

@@ -65,11 +65,13 @@
                   <%= game.awayScore !==undefined ? game.awayScore : 'N/A' %>
                 </td>
                 <td class="px-4 py-2">
+                
                   <button id="editGameButton_<%= game._id %>"
                     class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
                     data-id="<%= game._id %>">
                     Edit
                   </button>
+                
                   <form id="deleteForm_<%= game._id %>" data-id="<%= game._id %>" >
                     <input type="hidden" name="_method" value="DELETE" />
                     <button type="submit" class="delete-button text-red-600 hover:text-red-900">
@@ -145,11 +147,11 @@
         <div id="addGameModal"
           class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
           <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
-            <form id="addGameForm" action="/schedule" method="POST">
+            <form id="addGameForm" action="/schedules" method="POST">
               <h2 class="text-xl font-semibold mb-2">Add Game</h2>
               <div class="mb-4">
                 <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
-                <input type="text" id="date" name="date" class="w-full border rounded py-2 px-3" required />
+                <input type="date" id="date" name="date" class="w-full border rounded py-2 px-3" required />
               </div>
               <div class="mb-4">
                 <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
