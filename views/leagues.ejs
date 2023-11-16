@@ -40,11 +40,13 @@
               </td>
               <td
                 class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                <%= league.startDate.toDateString() %>
+                <%= league.startDate.toLocaleDateString('en-US', { month: 'short' ,
+                day: 'numeric' , year: 'numeric' }) %>
               </td>
               <td
                 class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                <%= league.endDate.toDateString() %>
+                <%= league.endDate.toLocaleDateString('en-US', { month: 'short' ,
+                day: 'numeric' , year: 'numeric' }) %>
               </td>
               <td
                 class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">

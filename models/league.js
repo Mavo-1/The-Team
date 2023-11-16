@@ -17,7 +17,8 @@ const leagueSchema = new mongoose.Schema({
   endDate: {
     type: Date,
     required: true
-  }
+  },
+ 
 })
 
 module.exports = mongoose.model('League', leagueSchema)

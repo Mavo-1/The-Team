@@ -42,42 +42,45 @@
             <% games.forEach(game=> { %>
               <tr class="uppercase hover:bg-gray-200">
                 <td class="px-4 py-2">
-                  <%= new Date(game.date).toLocaleDateString('en-US', { weekday: 'short' , month: 'short' ,
+                  <%= new Date(game.date).toLocaleDateString('en-US', {month: 'short' ,
                     day: 'numeric' , year: 'numeric' }) %>
                     <%= new Date(`1970-01-01T${game.time}:00.000Z`).toLocaleTimeString('en-US', { hour: 'numeric' ,
                       minute: 'numeric' , hour12: true }) %>
 
 
                 </td>
-                <td class="px-4 py-2">
+                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.location %>
                 </td>
-                <td class="px-4 py-2">
+                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.homeTeam %>
                 </td>
-                <td class="px-4 py-2">
+                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.awayTeam %>
                 </td>
-                <td class="px-4 py-2">
+                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.homeScore !==undefined ? game.homeScore : 'N/A' %>
                 </td>
-                <td class="px-4 py-2">
+                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.awayScore !==undefined ? game.awayScore : 'N/A' %>
                 </td>
-                <td class="px-4 py-2">
-                
+                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                <div>
+                  <form action="">
+                    <input type="hidden" name="_method" value="DELETE" />
                   <button id="editGameButton_<%= game._id %>"
-                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded"
+                    class="edit-button text-blue-600 hover:text-red-900"
                     data-id="<%= game._id %>">
                     Edit
                   </button>
-                
+                </form>
                   <form id="deleteForm_<%= game._id %>" data-id="<%= game._id %>" >
                     <input type="hidden" name="_method" value="DELETE" />
                     <button type="submit" class="delete-button text-red-600 hover:text-red-900">
                       Delete
                     </button>
                   </form>
+                </div>
                 </td>
               </tr>
               <% }); %>
