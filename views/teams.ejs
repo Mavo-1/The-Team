@@ -32,9 +32,9 @@
                             <tbody>
                                 <!-- Use EJS to iterate through teams and display them in the table -->
                                 <% teams.forEach(team=> { %>
-                                    <tr class="uppercase hover:bg-gray-200">
+                                    <tr class=" hover:bg-gray-200">
                                         <td class="px-4 py-2">
-                                           <a href="/leagues/<%= team._id %>/roster" class="text-indigo-600 hover:text-indigo-900"> <%= team.teamName %></a>
+                                           <a href="/leagues/<%= team._id %>/roster" class="uppercase text-indigo-600 hover:text-indigo-900"> <%= team.teamName %></a>
                                         </td>
                                         <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                                             <%= team.coachName %>
