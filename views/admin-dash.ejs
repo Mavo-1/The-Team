@@ -17,11 +17,25 @@
 
     <!-- Main Content -->
     <div class="container mx-auto p-8">
-      <!-- Your content will go here -->
-      <h1 class="text-5xl font-semibold mb-4">
-        Welcome <%= user.firstName %>
-      </h1>
-    </div>
+      <!-- User Profile Section -->
+      <div class="flex items-center mb-8">
+        <div class="mr-4">
+          <!-- You can replace this with an actual user profile picture -->
+          <img
+            src="path/to/profile-picture.jpg"
+            alt="Profile Picture"
+            class="w-12 h-12 rounded-full"
+          />
+        </div>
+        <div>
+          <h1 class="text-5xl font-semibold mb-2">
+            Welcome <%= user.firstName %>
+          </h1>
+          <p class="text-gray-600">
+            Role: Admin <%= user.role %> | Email: <%= user.email %>
+          </p>
+        </div>
+      </div>
 
     <!-- Add more sections as needed for leagues, standings, schedule, practices -->
 
