@@ -7,36 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
-    <%- include('partials/header') %>
-    <div class="flex-grow">
+
+        
     
-    <h1 class="text-4xl font-semibold text-center mt-8">Standings</h1>
-    <table class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg">
-        <thead>
-            <tr>
-                <th class="px-4 py-2 text-left">Rank</th>
-                <th class="px-4 py-2 text-left">Team Name</th>
-                <th class="px-4 py-2 text-left">Record</th>
-                <th class="px-4 py-2 text-left">Next Opponent</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="hover:bg-gray-200">
-                <td class="px-4 py-2">1</td>
-                <td class="px-4 py-2">Team A</td>
-                <td class="px-4 py-2">10-2</td>
-                <td class="px-4 py-2">Team B</td>
-            </tr>
-            <tr class="hover:bg-gray-200">
-                <td class="px-4 py-2">2</td>
-                <td class="px-4 py-2">Team B</td>
-                <td class="px-4 py-2">9-3</td>
-                <td class="px-4 py-2">Team C</td>
-            </tr>
-            <!-- Add more rows for other teams -->
-        </tbody>
-    </table>
-</div>
+        <div class="min-h-screen">
+            <%- include('partials/header') %>
+            <main class="py-4">
+                <h1 class="text-3xl font-semibold text-center mt-8">League Standings</h1>
+    
+                <!-- Display a grid of league squares -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <% leagues.forEach(league => { %>
+                        <a href="/standings/<%= league._id %>" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded">
+                            <%= league.leagueName %>
+                        </a>
+                    <% }); %>
+                </div>
+            </main>
+        </div>
+    
+       
 <footer>
     <%- include('partials/footer') %>
 </footer>

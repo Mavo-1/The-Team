@@ -59,12 +59,14 @@ const homeRoutes= require('./routes/home');
 const dashRoutes = require('./routes/dashboard');
 const leagueRoutes = require('./routes/leagueRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
+const standingRoutes = require('./routes/standingRoutes')
 
 //Routes
 app.use('/', homeRoutes);
 app.use('/dashboard',dashRoutes);
 app.use('/leagues',leagueRoutes);
 app.use('/schedules',scheduleRoutes);
+app.use('/standings',standingRoutes);
 
 
 app.use((err, req, res, next) => {

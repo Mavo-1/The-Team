@@ -6,7 +6,6 @@ const { ensureAuth } = require('../middleware/auth');
 
 // Dashboard routes
 router.get('/', ensureAuth, dashboardController.getDashEJS);
-router.get('/standings', ensureAuth, dashboardController.getStandingsEJS);
 router.get('/practice', ensureAuth, dashboardController.getPracticesEJS);
 
 

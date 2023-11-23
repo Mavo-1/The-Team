@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= league.leagueName %> Standings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- You might want to include your own styles or link to a CSS file here -->
+</head>
+
+<body class="font-sans">
+    <%- include('partials/header') %>
+
+    <div class="min-h-screen">
+        <main class="py-4">
+            <h1 class="text-3xl font-semibold text-center mt-8"><%= league.leagueName %> Standings</h1>
+
+            <!-- Display standings information -->
+            <table class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
+                <thead>
+                    <tr class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-gray-300 bg-blue-950 rounded-t-lg">
+                        <th class="px-4 py-2">Team</th>
+                        <th class="px-4 py-2">Wins</th>
+                        <th class="px-4 py-2">Losses</th>
+                        <!-- Add more columns as needed for your standings -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <% standings.forEach((standing) => { %>
+                        <tr class="uppercase hover:bg-gray-200">
+                            <td class="px-4 py-2"><%= standing.team.teamName %></td>
+                            <td class="px-4 py-2"><%= standing.wins %></td>
+                            <td class="px-4 py-2"><%= standing.losses %></td>
+                            <!-- Add more cells as needed for your standings -->
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+
+            <!-- Button to go back to schedule page -->
+            <div class="text-center mt-4">
+                <a href="/schedules" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
+                    Back to Schedule
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>

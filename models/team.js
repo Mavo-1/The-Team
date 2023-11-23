@@ -31,9 +31,14 @@ const teamSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             ref: 'Player'
-        }
-       
-    ]
+        },
+       ],
+     games: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Game',
+        },
+     ]  ,
 });
 
 const Team = mongoose.model('Team', teamSchema);
