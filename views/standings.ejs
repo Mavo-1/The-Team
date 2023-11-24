@@ -18,7 +18,7 @@
                 <!-- Display a grid of league squares -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <% leagues.forEach(league => { %>
-                        <a href="/standings/<%= league._id %>" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-4 px-6 rounded">
+                        <a href="/standings/<%= league._id %>" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-4 px-4 rounded">
                             <%= league.leagueName %>
                         </a>
                     <% }); %>
