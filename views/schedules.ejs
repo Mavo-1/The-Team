@@ -66,8 +66,8 @@
                 </td>
                 <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                 <div>
-                  <form action="">
-                    <input type="hidden" name="_method" value="DELETE" />
+                  <form action="/update/<%= game._id %>" method="POST">
+                    <input type="hidden" name="_method" value="PUT" />
                   <button id="editGameButton_<%= game._id %>"
                     class="edit-button text-blue-600 hover:text-red-900"
                     data-id="<%= game._id %>">
@@ -122,7 +122,7 @@
                 </div>
                 <button type="submit" id="submitGameButton"
                   class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
-                  Add Game
+                  Update
                 </button>
               </form>
               <button id="closeEditModal" class="bg-red-500 text-white px-4 py-2 rounded mt-4">

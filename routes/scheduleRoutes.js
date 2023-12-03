@@ -13,8 +13,8 @@ router.post('/', ensureAuth, scheduleController.addGame);
 // Delete a game
 router.delete('/:gameId', ensureAuth, scheduleController.deleteGame);
 
-// // Update a game
-// router.put('/update/:id', ensureAuth, scheduleController.updateGame);
+//Update
+ router.put('/update/:id', ensureAuth, scheduleController.updateGame);
 
 
 

@@ -22,8 +22,8 @@ exports.getDashEJS = async (req, res) => {
 
 
 //Function to render the practice page
-exports.getPracticesEJS = (req,res)=> {
-    res.render('practices.ejs') //{practiceData} replaces with actually league data if you have it
+exports.getSettingsEJS = (req,res)=> {
+    res.render('settings.ejs') //{practiceData} replaces with actually league data if you have it
 }
 
 

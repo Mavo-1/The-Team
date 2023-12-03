@@ -130,29 +130,9 @@ exports.deleteGame = async (req, res) => {
     }
   };
 
-  // Create a new controller function to get games by date.
-exports.getGamesByDate = async (req, res) => {
-    try {
-      const { date } = req.query; // Assuming you send the date as a query parameter.
-      const games = await Game.find({ date });
-      
-      res.status(200).json(games);
-    } catch (error) {
-      res.status(500).json({ error: 'Error retrieving games by date' });
-    }
-  };
+
   
-  // Create a new controller function to get games by location.
-  exports.getGamesByLocation = async (req, res) => {
-    try {
-      const { location } = req.query; // Assuming you send the location as a query parameter.
-      const games = await Game.find({ location });
-      
-      res.status(200).json(games);
-    } catch (error) {
-      res.status(500).json({ error: 'Error retrieving games by location' });
-    }
-  };
+ 
   
   // Create a controller function to get teams in a specific league by leagueID.
 exports.getTeamsInLeague = async (req, res) => {
