@@ -14,7 +14,7 @@ router.post('/', ensureAuth, scheduleController.addGame);
 router.delete('/:gameId', ensureAuth, scheduleController.deleteGame);
 
 //Update
- router.put('/update/:id', ensureAuth, scheduleController.updateGame);
+ router.post('/update/:id', ensureAuth, scheduleController.updateGame);
 
 
 

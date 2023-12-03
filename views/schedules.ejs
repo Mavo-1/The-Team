@@ -8,17 +8,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100 font-sans min-h-screen" >
+<body class="bg-gray-100 font-sans min-h-screen">
   <%- include('partials/header') %>
     <!-- Search Bar to Filter Games -->
-    <div class="flex justify-end p-4 items-center space-x-2" >
+    <div class="flex justify-end p-4 items-center space-x-2">
       <input type="text" id="search" placeholder="location,date,league,team" class="border p-2 rounded-lg" />
       <button id="searchButton" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
         Search
       </button>
     </div>
     <div class="min-h-screen">
-      <main >
+      <main>
         <h1 class="mb-4 text-3xl font-medium text-center mt-4 text-blue-950">
           Schedule
         </h1>
@@ -28,7 +28,8 @@
 
         <table class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
           <thead>
-            <tr class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-gray-300 bg-blue-950 rounded-t-lg">
+            <tr
+              class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-gray-300 bg-blue-950 rounded-t-lg">
               <th class="px-4 py-2">Date & Time</th>
               <th class="px-4 py-2">Location</th>
               <th class="px-4 py-2">Home Team</th>
@@ -42,45 +43,49 @@
             <% games.forEach(game=> { %>
               <tr class="uppercase hover:bg-gray-200">
                 <td class="px-4 py-2">
-                  <%= new Date(game.date).toLocaleDateString('en-US', {month: 'short' ,
-                    day: 'numeric' , year: 'numeric' }) %>
+                  <%= new Date(game.date).toLocaleDateString('en-US', {month: 'short' , day: 'numeric' , year: 'numeric'
+                    }) %>
                     <%= new Date(`1970-01-01T${game.time}:00.000Z`).toLocaleTimeString('en-US', { hour: 'numeric' ,
                       minute: 'numeric' , hour12: true }) %>
 
 
                 </td>
-                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                <td
+                  class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.location %>
                 </td>
-                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                <td
+                  class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.homeTeam %>
                 </td>
-                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                <td
+                  class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.awayTeam %>
                 </td>
-                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                <td
+                  class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.homeScore !==undefined ? game.homeScore : 'N/A' %>
                 </td>
-                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                <td
+                  class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
                   <%= game.awayScore !==undefined ? game.awayScore : 'N/A' %>
                 </td>
-                <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                <div>
-                  <form action="/update/<%= game._id %>" method="POST">
-                    <input type="hidden" name="_method" value="PUT" />
-                  <button id="editGameButton_<%= game._id %>"
-                    class="edit-button text-blue-600 hover:text-red-900"
-                    data-id="<%= game._id %>">
-                    Edit
-                  </button>
-                </form>
-                  <form id="deleteForm_<%= game._id %>" data-id="<%= game._id %>" >
-                    <input type="hidden" name="_method" value="DELETE" />
-                    <button type="submit" class="delete-button text-red-600 hover:text-red-900">
-                      Delete
-                    </button>
-                  </form>
-                </div>
+                <td
+                  class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                  <div>
+                    <form id="editGameButton_<%= game._id %>" data-id="<%= game._id %>">
+                      <input type="hidden" name="_method" value="PUT" />
+                      <button type="submit" class="edit-button text-blue-600 hover:text-red-900">
+                        Edit
+                      </button>
+                    </form>
+                    <form id="deleteForm_<%= game._id %>" data-id="<%= game._id %>">
+                      <input type="hidden" name="_method" value="DELETE" />
+                      <button type="submit" class="delete-button text-red-600 hover:text-red-900">
+                        Delete
+                      </button>
+                    </form>
+                  </div>
                 </td>
               </tr>
               <% }); %>
@@ -94,19 +99,19 @@
                 <h2 class="text-xl font-semibold mb-2">Add Game</h2>
                 <div class="mb-4">
                   <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
-                  <input type="text" id="date" name="date" class="w-full border rounded py-2 px-3" required />
+                  <input type="text" id="date" name="date" class="w-full border rounded py-2 px-3" />
                 </div>
                 <div class="mb-4">
                   <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
-                  <input type="time" id="time" name="time" class="w-full border rounded py-2 px-3" required />
+                  <input type="time" id="time" name="time" class="w-full border rounded py-2 px-3" />
                 </div>
                 <div class="mb-4">
                   <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
-                  <input type="text" id="location" name="location" class="w-full border rounded py-2 px-3" required />
+                  <input type="text" id="location" name="location" class="w-full border rounded py-2 px-3" />
                 </div>
                 <div class="mb-4">
                   <label for="homeTeam" class="block text-gray-700 text-sm font-bold mb-2">Home Team</label>
-                  <input type="text" id="homeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" required />
+                  <input type="text" id="homeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" />
                 </div>
                 <div class="mb-4">
                   <label for="homeScore" class="block text-gray-700 text-sm font-bold mb-2">Home Score</label>
@@ -114,13 +119,13 @@
                 </div>
                 <div class="mb-4">
                   <label for="awayTeam" class="block text-gray-700 text-sm font-bold mb-2">Away Team</label>
-                  <input type="text" id="awayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" required />
+                  <input type="text" id="awayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" />
                 </div>
                 <div class="mb-4">
                   <label for="awayScore" class="block text-gray-700 text-sm font-bold mb-2">Away Score</label>
                   <input type="text" id="awayScore" name="awayScore" class="w-full border rounded py-2 px-3" />
                 </div>
-                <button type="submit" id="submitGameButton"
+                <button type="submit" id="updateGame"
                   class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
                   Update
                 </button>
@@ -181,17 +186,17 @@
                 <input type="text" id="awayScore" name="awayScore" class="w-full border rounded py-2 px-3" />
               </div>
               <div class="flex justify-between">
-              <button type="submit" id="submitGameButton"
-                class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
-                Add Game
-              </button>
+                <button type="submit" id="submitGameButton"
+                  class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
+                  Add Game
+                </button>
             </form>
             <button id="closeAddGameModal" class="bg-red-500 text-white px-4 py-2 rounded">
               Close
             </button>
-           </div>
           </div>
         </div>
+    </div>
     </div>
 
     <!--Delete confirmation (Initially hidden) -->
