@@ -45,57 +45,24 @@ exports.addGame = async (req, res) => {
 
 
   exports.updateGame = async (req, res) => {
-    try {
-      const gameId = req.params.id;
-      const updatedData = req.body;
-  
-      // Retrieve the game from the database
-      const game = await Game.findById(gameId);
-  
-      if (!game) {
-        return res.status(404).json({ error: 'Game not found' });
-      }
-  
-      // Update the game object with the updated data
-      // You should validate and apply the updatedData to game here
-      switch (updatedData.fieldToUpdate) {
-        case 'date':
-          game.date = updatedData.date;
-          break;
-        case 'time':
-          game.time = updatedData.time;
-          break;
-        case 'location':
-          game.location = updatedData.location;
-          break;
-        case 'homeTeam':
-          game.homeTeam = updatedData.homeTeam;
-          break;
-        case 'awayTeam':
-          game.awayTeam = updatedData.awayTeam;
-          break;
-        case 'homeScore':
-          game.homeScore = updatedData.homeScore;
-          break;
-        case 'awayScore':
-          game.awayScore = updatedData.awayScore;
-          break;
-        default:
-          // Handle unknown fields or provide an error message
-          break;
-      }
-  
-      // Save the updated game to the database
-      await game.save();
-  
-      // Pass the updated game data when rendering 'schedules.ejs'
-      res.status(200).json(game);
-      res.render('schedules.ejs', { game: game }); // Use the 'game' variable here
-    } catch (error) {
-      res.status(500).json({ error: 'Error updating the game' });
-      
-    }
-  };
+   const gameId = req.params.id;
+   const { homeScore, awayScore} = req.body;
+
+   try{
+    const updatedGame = await Game.findByIdAndUpdate(
+      gameId,
+      {$set: { homeScore, awayScore} },
+      { new: true}
+    );
+
+    //Respond with the updated game
+    res.json(updatedGame);
+   }catch(error){
+    console.error('Error updating game scores:', error);
+    //Respond with an error status
+    res.status(500).send('Error updating game scores');
+   }
+};
   
 
 

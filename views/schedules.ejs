@@ -76,7 +76,7 @@
                     <form id="editGameButton_<%= game._id %>" data-id="<%= game._id %>">
                       <input type="hidden" name="_method" value="PUT" />
                       <button type="submit" class="edit-button text-blue-600 hover:text-red-900">
-                        Edit Game
+                        Edit Scores
                       </button>
                     </form>
                     <form id="deleteForm_<%= game._id %>" data-id="<%= game._id %>">
@@ -95,37 +95,18 @@
           <div id="editGameModal"
             class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
             <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
-              <form id="addGameForm" action="" method="">
-                <h2 class="text-xl font-semibold mb-2">Add Game</h2>
-                <div class="mb-4">
-                  <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
-                  <input type="text" id="date" name="date" class="w-full border rounded py-2 px-3" />
-                </div>
-                <div class="mb-4">
-                  <label for="time" class="block text-gray-700 text-sm font-bold mb-2">Time</label>
-                  <input type="time" id="time" name="time" class="w-full border rounded py-2 px-3" />
-                </div>
-                <div class="mb-4">
-                  <label for="location" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
-                  <input type="text" id="location" name="location" class="w-full border rounded py-2 px-3" />
-                </div>
-                <div class="mb-4">
-                  <label for="homeTeam" class="block text-gray-700 text-sm font-bold mb-2">Home Team</label>
-                  <input type="text" id="homeTeam" name="homeTeam" class="w-full border rounded py-2 px-3" />
-                </div>
+              <form id="editGameForm" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <h2 class="text-xl font-semibold mb-2">Edit Scores</h2>
                 <div class="mb-4">
                   <label for="homeScore" class="block text-gray-700 text-sm font-bold mb-2">Home Score</label>
                   <input type="text" id="homeScore" name="homeScore" class="w-full border rounded py-2 px-3" />
                 </div>
                 <div class="mb-4">
-                  <label for="awayTeam" class="block text-gray-700 text-sm font-bold mb-2">Away Team</label>
-                  <input type="text" id="awayTeam" name="awayTeam" class="w-full border rounded py-2 px-3" />
-                </div>
-                <div class="mb-4">
                   <label for="awayScore" class="block text-gray-700 text-sm font-bold mb-2">Away Score</label>
                   <input type="text" id="awayScore" name="awayScore" class="w-full border rounded py-2 px-3" />
                 </div>
-                <button type="submit" id="updateGame"
+                <button type="button" id="updateGame"
                   class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
                   Update
                 </button>

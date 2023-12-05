@@ -3,18 +3,19 @@ const router = express.Router();
 const scheduleController = require('../controllers/scheduleController');
 const { ensureAuth } = require('../middleware/auth');
 
+//app.get(endpoint, callback)
 router.get('/', ensureAuth, scheduleController.getScheduleEJS);
 
 
 
-//Create a new game
+//Create a new game  
 router.post('/', ensureAuth, scheduleController.addGame);
 
 // Delete a game
 router.delete('/:gameId', ensureAuth, scheduleController.deleteGame);
 
 //Update
- router.post('/update/:id', ensureAuth, scheduleController.updateGame);
+ router.put('/update/:id', ensureAuth, scheduleController.updateGame);
 
 
 
