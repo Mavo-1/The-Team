@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const { Schema} = mongoose;
+const { Schema } = mongoose;
 
 const gameSchema = new Schema({
-    //date,time,location, awayteam, hometeam, awayscore, homescore
+    
     date: {
         type: Date,
         required: true,

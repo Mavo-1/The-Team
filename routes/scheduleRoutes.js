@@ -6,10 +6,9 @@ const { ensureAuth } = require('../middleware/auth');
 //app.get(endpoint, callback)
 router.get('/', ensureAuth, scheduleController.getScheduleEJS);
 
-
-
+router.get('/:leagueId/games',ensureAuth, scheduleController.getGamesEJS);
 //Create a new game  
-router.post('/', ensureAuth, scheduleController.addGame);
+router.post('/:leagueId/games', ensureAuth, scheduleController.addGame);
 
 // Delete a game
 router.delete('/:gameId', ensureAuth, scheduleController.deleteGame);

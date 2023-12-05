@@ -1,14 +1,17 @@
+const League = require('../models/League');
 const Game = require('../models/Game');
+
 
 
 //Function to render the Schedule page
 exports.getScheduleEJS = async (req,res)=> {
     try{
         //Fetch the games data from DB 
+        const leagues= await League.find();
         const games = await Game.find();
 
         //Render scheudle page and pass games data
-        res.render('schedules.ejs', {games});
+        res.render('schedules.ejs', {leagues, games});
     }catch (error){
         res.render('error.html', { error })
     }
@@ -16,9 +19,34 @@ exports.getScheduleEJS = async (req,res)=> {
     
 }
 
+//Function to render the Schedule page
+exports.getGamesEJS = async (req,res)=> {
+  try{
+      const leagueId= req.params.leagueId; //retrieve leagueId from query parameters
+      
+      if(!leagueId){
+        return res.status(400).send('Missing leaugeId Parameter');
+      }
+
+      const league = await League.findById(leagueId);
+      if(!league) {
+        return res.status(404).send('League not found');
+      };
+
+      const games = await Game.find( { leagueName: league._id });
+      //Render scheudle page and pass games data
+      res.render('games.ejs', { league, games})
+  }catch (error){
+      res.render('error.html', { error })
+  }
+
+  
+}
+
 // Create a controller function to add a new game.
 exports.addGame = async (req, res) => {
     try {
+      const league= await League.findById(req.params.leagueId);
       const { date, time, location, homeTeam, awayTeam, homeScore, awayScore} = req.body;
       
       // Perform validation and handle other logic.
@@ -31,12 +59,13 @@ exports.addGame = async (req, res) => {
         awayTeam,
         homeScore,
         awayScore,
+        leagueName: league._id
         // Other game fields
       });
   
       await game.save();
   
-      res.redirect('/schedules')
+      res.redirect(`/schedules/${league._id}/games`);
     } catch (error) {
       res.status(500).json({ error: 'Error creating the game' });
     }
