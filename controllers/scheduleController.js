@@ -1,5 +1,7 @@
 const League = require('../models/League');
 const Game = require('../models/Game');
+const Team = require('../models/Team');
+
 
 
 
@@ -20,27 +22,52 @@ exports.getScheduleEJS = async (req,res)=> {
 }
 
 //Function to render the Schedule page
-exports.getGamesEJS = async (req,res)=> {
-  try{
-      const leagueId= req.params.leagueId; //retrieve leagueId from query parameters
-      
-      if(!leagueId){
-        return res.status(400).send('Missing leaugeId Parameter');
-      }
+exports.getGamesEJS = async (req, res) => {
+  try {
+    const leagueId = req.params.leagueId;
+    
+    if (!leagueId) {
+      return res.status(400).send('Missing leagueId Parameter');
+    }
 
-      const league = await League.findById(leagueId);
-      if(!league) {
-        return res.status(404).send('League not found');
-      };
+    const league = await League.find();
+    if (!league) {
+      return res.status(404).send('League not found');
+    } 
 
-      const games = await Game.find( { leagueName: league._id });
-      //Render scheudle page and pass games data
-      res.render('games.ejs', { league, games})
-  }catch (error){
-      res.render('error.html', { error })
+    const games = await Game.find();
+
+    res.render('games.ejs', { league, games });
+  } catch (error) {
+    res.render('error.html', { error });
   }
+};
 
-  
+
+exports.searchGamesEJS = async (req, res) => {
+  try {
+    const searchTerm = req.query.search;
+
+    let query = {};
+    if (searchTerm) {
+      query = {
+        $or: [
+          { date: { $regex: new RegExp(searchTerm, 'i') } },
+          { location: { $regex: new RegExp(searchTerm, 'i') } },
+          { homeTeam: { $regex: new RegExp(searchTerm, 'i') } },
+          { awayTeam: { $regex: new RegExp(searchTerm, 'i') } },
+        ],
+      };
+    }
+   
+    
+    const games = await Game.find(query);
+// Additional logic for obtaining league data if needed
+const league = await League.find();
+    res.render('games.ejs', { league, games });
+  } catch (error) {
+    res.render('error.html', { error });
+  }
 }
 
 // Create a controller function to add a new game.
@@ -112,63 +139,5 @@ exports.deleteGame = async (req, res) => {
     res.render('schedules.ejs', {games});
   } catch (error) {
     res.status(500).json({ error: 'Error deleting the game' });
-  }
-};
-
-  
-  exports.getGames = async (req, res) => {
-    try {
-      const games = await Game.find();
-  
-      res.status(200).json(games);
-    } catch (error) {
-      res.status(500).json({ error: 'Error retrieving games' });
-    }
-  };
-
-
-  
- 
-  
-  // Create a controller function to get teams in a specific league by leagueID.
-exports.getTeamsInLeague = async (req, res) => {
-    try {
-      const { leagueID } = req.params; // Assuming leagueID is part of the URL.
-      const teams = await Team.find({ league: leagueID });
-  
-      res.status(200).json(teams);
-    } catch (error) {
-      res.status(500).json({ error: 'Error retrieving teams in the league' });
-    }
-  };
-
-  // Modify the getTeamsInLeagueByName function in your controller
-exports.getTeamsInLeagueByName = async (req, res) => {
-  try {
-      const { leagueName } = req.params;
-      const teams = await Team.find({ leagueName });
-      res.status(200).json(teams);
-  } catch (error) {
-      res.status(500).json({ error: 'Error retrieving teams in the league' });
-  }
-};
-
-exports.getAllLeagues = async (req, res) => {
-  try {
-      // Fetch all leagues from the database
-      const leagues = await League.find({}, 'name'); // Assuming the league model has a 'name' field
-      res.render('leagues.ejs', { leagues });
-  } catch (error) {
-      res.status(500).json({ error: 'Error retrieving leagues' });
-  }
-};
-
-exports.getTeamsInSelectedLeague = async (req, res) => {
-  try {
-      const { selectedLeague } = req.query;
-      const teams = await Team.find({ leagueName: selectedLeague });
-      res.status(200).json(teams);
-  } catch (error) {
-      res.status(500).json({ error: 'Error retrieving teams in the selected league' });
   }
 };

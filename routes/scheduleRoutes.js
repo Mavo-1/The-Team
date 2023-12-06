@@ -5,8 +5,9 @@ const { ensureAuth } = require('../middleware/auth');
 
 //app.get(endpoint, callback)
 router.get('/', ensureAuth, scheduleController.getScheduleEJS);
-
 router.get('/:leagueId/games',ensureAuth, scheduleController.getGamesEJS);
+// Search for games across all leagues
+router.get('/search/games', ensureAuth, scheduleController.searchGamesEJS);
 //Create a new game  
 router.post('/:leagueId/games', ensureAuth, scheduleController.addGame);
 
@@ -18,20 +19,6 @@ router.delete('/:gameId', ensureAuth, scheduleController.deleteGame);
 
 
 
-// //Get games by date
-// router.get("/gamesByDate", ensureAuth, scheduleController.getGamesByDate);
-
-// //Get games by location
-// router.get('/gameByLocation', ensureAuth, scheduleController.getGamesByLocation);
-
-// //Get teams in a specific league by 
-// router.get('/teamsInLeague/:leagueID', ensureAuth, scheduleController.getTeamsInLeague);
-
-// //Ge tteams by league name
-// router.get('/teamsInLeague/:leagueName', ensureAuth, scheduleController.getTeamsInLeagueByName);
-
-// //Fetches all leagues to render dropdown page.
-// router.get('/leagues', ensureAuth, scheduleController.getAllLeagues);
 
 
 module.exports = router;
