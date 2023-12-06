@@ -52,23 +52,22 @@ exports.searchGamesEJS = async (req, res) => {
     if (searchTerm) {
       query = {
         $or: [
-          { date: { $regex: new RegExp(searchTerm, 'i') } },
-          { location: { $regex: new RegExp(searchTerm, 'i') } },
-          { homeTeam: { $regex: new RegExp(searchTerm, 'i') } },
-          { awayTeam: { $regex: new RegExp(searchTerm, 'i') } },
+          { date: { $regex: new RegExp(searchTerm, "i") } },
+          { location: { $regex: new RegExp(searchTerm, "i") } },
+          { homeTeam: { $regex: new RegExp(searchTerm, "i") } },
+          { awayTeam: { $regex: new RegExp(searchTerm, "i") } },
         ],
       };
     }
-   
-    
+
     const games = await Game.find(query);
-// Additional logic for obtaining league data if needed
-const league = await League.find();
-    res.render('games.ejs', { league, games });
+    // Additional logic for obtaining league data if needed
+    const league = await League.find();
+    res.render("games.ejs", { league, games });
   } catch (error) {
-    res.render('error.html', { error });
+    res.render("error.html", { error });
   }
-}
+};
 
 // Create a controller function to add a new game.
 exports.addGame = async (req, res) => {
