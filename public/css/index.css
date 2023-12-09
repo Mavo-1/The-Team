@@ -1,11 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
 
-/*
-	Alpha by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 /* Reset */
 
@@ -2017,6 +2012,9 @@
 		text-align: center;
 	}
 
+    header h2 {
+        font-size: 3em;
+    }
 	header p {
 		color: #999;
 		position: relative;
@@ -3181,11 +3179,12 @@
 		}
 
 		#banner h2 {
-			font-size: 3.5em;
-			line-height: 1em;
-			margin: 0 0 0.5em 0;
-			padding: 0;
-		}
+            font-size: 5.5em;
+            line-height: 1em;
+            margin: 0 0 0.5em 0;
+            padding: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a subtle text shadow for better visibility */
+          }
 
 		#banner p {
 			font-size: 1.25em;
@@ -3303,7 +3302,7 @@
 /* CTA */
 
 	#cta {
-		background: #e89980;
+		background: rgb(68, 94, 198);
 		color: #f9e6df;
 		padding: 3.5em 0 4em 0;
 		text-align: center;
