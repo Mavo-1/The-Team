@@ -3278,7 +3278,7 @@ body.landing #page-wrapper {
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-    padding: 12em 0 10em 0;
+    padding: 15em 0 10em 0;
     /* Adjusted padding for better visibility */
     text-align: center;
 }
@@ -3297,7 +3297,7 @@ body.landing #page-wrapper {
 
 #banner h2 {
     font-family: 'Your Preferred Font', sans-serif; /* Add your preferred font */
-    font-size: 5.5em;
+    font-size: 3.5em;
     line-height: 1em;
     margin: 2em 0 0.5em 0; /* Adjusted margin-top to lower the h2 */
     padding: 0;
@@ -3424,7 +3424,7 @@ body.landing #main {
 
 #cta {
     background: rgb(68, 94, 198);
-    color: #f9e6df;
+    color: #ffffff;
     padding: 3.5em 0 4em 0;
     text-align: center;
 }
@@ -3449,7 +3449,7 @@ body.landing #main {
 #cta .button {
     box-shadow: none;
     background: #fff;
-    color: #e89980;
+    color: rgb(68, 94, 198);
 }
 
 #cta input[type="text"],
