@@ -31,7 +31,7 @@ exports.getGamesEJS = async (req, res) => {
     }
 
     // Assuming there's a property like "league" in your Game model
-    const games = await Game.find({ league: leagueId });
+    const games = await Game.find({ leagueName: leagueId });
 
     if (!games) {
       return res.status(404).send('Games not found for the given league');
@@ -91,7 +91,7 @@ exports.addGame = async (req, res) => {
       awayTeam,
       homeScore,
       awayScore,
-      league: league._id, // Change to use "league"
+      leagueName: league._id, // Change to use "league"
       // Other game fields
     });
 
