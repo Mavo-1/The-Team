@@ -2953,7 +2953,7 @@ input[type="reset"].primary,
 input[type="button"].primary,
 .button.primary {
     background-color: #e89980;
-    color: #ffffff !important;
+    color: #da3333 !important;
 }
 
 input[type="submit"].primary:hover,
@@ -3356,8 +3356,8 @@ body.landing #page-wrapper {
 }
 
 #main>header h2 {
-    font-size: 2.75em;
-    margin: 0;
+    font-size: 1.75em;
+    margin: 4em;
 }
 
 #main>header p {
