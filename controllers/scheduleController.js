@@ -30,18 +30,24 @@ exports.getGamesEJS = async (req, res) => {
       return res.status(400).send('Missing leagueId Parameter');
     }
 
-    const league = await League.find();
+    // Assuming there's a property like "league" in your Game model
+    const games = await Game.find({ league: leagueId });
+
+    if (!games) {
+      return res.status(404).send('Games not found for the given league');
+    }
+
+    const league = await League.findById(leagueId);
     if (!league) {
       return res.status(404).send('League not found');
     } 
-
-    const games = await Game.find();
 
     res.render('games.ejs', { league, games });
   } catch (error) {
     res.render('error.html', { error });
   }
 };
+
 
 
 exports.searchGamesEJS = async (req, res) => {
@@ -71,31 +77,32 @@ exports.searchGamesEJS = async (req, res) => {
 
 // Create a controller function to add a new game.
 exports.addGame = async (req, res) => {
-    try {
-      const league= await League.findById(req.params.leagueId);
-      const { date, time, location, homeTeam, awayTeam, homeScore, awayScore} = req.body;
-      
-      // Perform validation and handle other logic.
-      console.log(req.body);
-      const game = new Game({
-        date,
-        time,
-        location,
-        homeTeam,
-        awayTeam,
-        homeScore,
-        awayScore,
-        leagueName: league._id
-        // Other game fields
-      });
-  
-      await game.save();
-  
-      res.redirect(`/schedules/${league._id}/games`);
-    } catch (error) {
-      res.status(500).json({ error: 'Error creating the game' });
-    }
-  };
+  try {
+    const league = await League.findById(req.params.leagueId);
+    const { date, time, location, homeTeam, awayTeam, homeScore, awayScore } = req.body;
+
+    // Perform validation and handle other logic.
+    console.log(req.body);
+    const game = new Game({
+      date,
+      time,
+      location,
+      homeTeam,
+      awayTeam,
+      homeScore,
+      awayScore,
+      league: league._id, // Change to use "league"
+      // Other game fields
+    });
+
+    await game.save();
+
+    res.redirect(`/schedules/${league._id}/games`);
+  } catch (error) {
+    res.status(500).json({ error: 'Error creating the game' });
+  }
+};
+
 
 
 
