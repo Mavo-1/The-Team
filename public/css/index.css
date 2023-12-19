@@ -3059,10 +3059,18 @@ body.landing #page-wrapper {
     top: 0;
 }
 
-#header h1 a {
+#header a {
     color: #fff;
     font-weight: 400;
-    border: 0;
+    font-size: larger;
+    text-shadow: 2px 2px 4px #2b2b2b;
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 15px; /* Add some spacing between links */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+#header a:hover {
+    color: #5779ff; 
 }
 
 #header nav {
