@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
       teamModal.classList.remove("hidden");
     });
   
-    closeModalButton.addEventListener("click", function () {
-      // Hide the modal when the "Close" button is clicked
+    closeModalButton.addEventListener("click", function (event) {
+      event.preventDefault();
       teamModal.classList.add("hidden");
     });
   

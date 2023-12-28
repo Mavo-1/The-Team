@@ -1,0 +1,42 @@
+const League = require('../models/League');
+const Location = require('../models/Location');
+
+exports.getLocationEJS = async (req,res)=> {
+    try{
+        const leagues = await League.find();
+
+        res.render('locations.ejs',{leagues})
+    }catch (error){
+        res.render('error.html',{error})
+    }
+
+    
+}
+
+//Function to render the Location page
+exports.getLocationsEJS = async (req, res) => {
+    try {
+      const leagueId = req.params.leagueId;
+      
+      if (!leagueId) {
+        return res.status(400).send('Missing leagueId Parameter');
+      }
+  
+      // Assuming there's a property like "league" in your Game model
+      const locations = await Location.find({ leagueName: leagueId });
+  
+      if (!locations) {
+        return res.status(404).send('Locations not found for the given league');
+      }
+  
+      const league = await League.findById(leagueId);
+      if (!league) {
+        return res.status(404).send('League not found');
+      } 
+  
+      res.render('locations.ejs', { league, locations });
+    } catch (error) {
+      res.render('error.html', { error });
+    }
+  };
+  

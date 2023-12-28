@@ -10,10 +10,10 @@ exports.getScheduleEJS = async (req,res)=> {
     try{
         //Fetch the games data from DB 
         const leagues= await League.find();
-        const games = await Game.find();
+        
 
         //Render scheudle page and pass games data
-        res.render('schedules.ejs', {leagues, games});
+        res.render('schedules.ejs', {leagues});
     }catch (error){
         res.render('error.html', { error })
     }

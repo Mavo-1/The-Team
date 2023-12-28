@@ -12,102 +12,109 @@
     <%- include('partials/header') %>
         <div class="min-h-screen">
             <main class="py-10">
-                
-                    <h1 class="mb-4 text-3xl font-medium text-center mt-4 text-blue-950">Teams</h1>
 
-                    <!-- List of Teams -->
-                    
-                        <!-- Table header -->
-                   
-                        <table class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
-                            <thead>
-                                <tr  class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-blue-950 bg-blue-950 rounded-t-lg">
-                                    <th class="px-4 py-2">Team Name</th>
-                                    <th class="px-4 py-2">Coach Name</th>
-                                    <th class="px-4 py-2">Age Level</th>
-                                    <th class="px-4 py-2">Coach Number</th>
-                                    <th class="px-4 py-2">Sport</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Use EJS to iterate through teams and display them in the table -->
-                                <% teams.forEach(team=> { %>
-                                    <tr class=" hover:bg-gray-200">
-                                        <td class="px-4 py-2">
-                                           <a href="/leagues/<%= team._id %>/roster" class="uppercase text-indigo-600 hover:text-indigo-900"> <%= team.teamName %></a>
-                                        </td>
-                                        <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                                            <%= team.coachName %>
-                                        </td>
-                                        <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                                            <%= team.ageLevel %>
-                                        </td>
-                                        <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                                            <%= team.coachNumber %>
-                                        </td>
-                                        <td class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                                            <%= team.sport %>
-                                        </td>
-                                    </tr>
-                                    <% }); %>
-                            </tbody>
-                        </table>
+                <h1 class="mb-4 text-3xl font-medium text-center mt-4 text-blue-950">Teams</h1>
+
+                <!-- List of Teams -->
+
+                <!-- Table header -->
+
+                <table
+                    class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
+                    <thead>
+                        <tr
+                            class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-blue-950 bg-blue-950 rounded-t-lg">
+                            <th class="px-4 py-2">Team Name</th>
+                            <th class="px-4 py-2">Coach Name</th>
+                            <th class="px-4 py-2">Age Level</th>
+                            <th class="px-4 py-2">Coach Number</th>
+                            <th class="px-4 py-2">Sport</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Use EJS to iterate through teams and display them in the table -->
+                        <% teams.forEach(team=> { %>
+                            <tr class=" hover:bg-gray-200">
+                                <td class="px-4 py-2">
+                                    <a href="/leagues/<%= team._id %>/roster"
+                                        class="uppercase text-indigo-600 hover:text-indigo-900">
+                                        <%= team.teamName %>
+                                    </a>
+                                </td>
+                                <td
+                                    class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                    <%= team.coachName %>
+                                </td>
+                                <td
+                                    class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                    <%= team.ageLevel %>
+                                </td>
+                                <td
+                                    class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                    <%= team.coachNumber %>
+                                </td>
+                                <td
+                                    class="px-4 py-2 text-blue-950 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                    <%= team.sport %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+        </div>
+
+
+        <!-- Add Team Button -->
+        <div class="fixed bottom-10 right-0 p-6">
+            <button id="addTeamButton"
+                class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add
+                Team</button>
+        </div>
+
+        <!-- Add Team Form (Initially hidden) -->
+        <div id="teamModal"
+            class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
+            <div class="bg-white p-8 rounded-lg" style="max-width: 600px;">
+
+                <form id="addTeamForm" action="/leagues/<%= league._id %>/teams" method="POST">
+                    <h2 class="text-xl font-semibold mb-2">Add Team</h2>
+                    <div class="mb-4">
+                        <label for="teamName" class="block text-gray-700 text-sm font-bold mb-2">Team
+                            Name</label>
+                        <input type="text" id="teamName" name="teamName" class="w-full border rounded py-2 px-3">
                     </div>
-                    
-
-                    <!-- Add Team Button -->
-                    <div class="fixed bottom-10 right-0 p-6">
-                        <button id="addTeamButton"
-                            class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Add
-                            Team</button>
+                    <div class="mb-4">
+                        <label for="coachName" class="block text-gray-700 text-sm font-bold mb-2">Coach
+                            Name</label>
+                        <input type="text" id="coachName" name="coachName" class="w-full border rounded py-2 px-3">
                     </div>
-
-                    <!-- Add Team Form (Initially hidden) -->
-                    <div id="teamModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
-                        <div class="bg-white p-8 rounded-lg" style="max-width: 600px;">
-                            
-                            <form id="addTeamForm" action="/leagues/<%= league._id %>/teams" method="POST">
-                                <h2 class="text-xl font-semibold mb-2">Add Team</h2>
-                                <div class="mb-4">
-                                    <label for="teamName" class="block text-gray-700 text-sm font-bold mb-2">Team
-                                        Name</label>
-                                    <input type="text" id="teamName" name="teamName"
-                                        class="w-full border rounded py-2 px-3">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="coachName" class="block text-gray-700 text-sm font-bold mb-2">Coach
-                                        Name</label>
-                                    <input type="text" id="coachName" name="coachName"
-                                        class="w-full border rounded py-2 px-3">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="ageLevel" class="block text-gray-700 text-sm font-bold mb-2">Age
-                                        Level</label>
-                                    <input type="text" id="ageLevel" name="ageLevel"
-                                        class="w-full border rounded py-2 px-3">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="coachNumber" class="block text-gray-700 text-sm font-bold mb-2">Coach
-                                        Number</label>
-                                    <input type="tel" id="coachNumber" name="coachNumber"
-                                        class="w-full border rounded py-2 px-3">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="sport" class="block text-gray-700 text-sm font-bold mb-2">Sport</label>
-                                    <input type="text" id="sport" name="sport" class="w-full border rounded py-2 px-3">
-                                </div>
-                                <input type="hidden" name="leagueId" value="<%= league._id %>">
-                                <button type="submit" id="submitTeamButton"
-                                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Submit
-                                    Team</button>
-
-                                
-                            </form>
-                            <button id="closeModalButton"
-                                    class="bg-red-500 text-white px-4 py-2 rounded mt-4">Close</button>
-                        </div>
+                    <div class="mb-4">
+                        <label for="ageLevel" class="block text-gray-700 text-sm font-bold mb-2">Age
+                            Level</label>
+                        <input type="text" id="ageLevel" name="ageLevel" class="w-full border rounded py-2 px-3">
                     </div>
-            </main>
+                    <div class="mb-4">
+                        <label for="coachNumber" class="block text-gray-700 text-sm font-bold mb-2">Coach
+                            Number</label>
+                        <input type="tel" id="coachNumber" name="coachNumber" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <div class="mb-4">
+                        <label for="sport" class="block text-gray-700 text-sm font-bold mb-2">Sport</label>
+                        <input type="text" id="sport" name="sport" class="w-full border rounded py-2 px-3">
+                    </div>
+                    <input type="hidden" name="leagueId" value="<%= league._id %>">
+                    <button type="submit" id="submitTeamButton"
+                        class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">Submit
+                        Team</button>
+
+                        <button id="closeModalButton" class="bg-red-500 text-white px-4 py-2 rounded mt-4">Close</button>
+
+
+                </form>
+
+            </div>
+        </div>
+        </main>
         </div>
 
         <%- include('partials/footer') %>
