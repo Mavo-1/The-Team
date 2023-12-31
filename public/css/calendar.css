@@ -1,0 +1,5 @@
+.fc-event.hovered {
+    background-color: #1565C0; /* Set the hover background color here */
+    color: white; /* Set the text color */
+    cursor: pointer; /* Add a pointer cursor on hover for better UX */
+  }

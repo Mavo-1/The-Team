@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add your other configuration options here
 
+    // Event Mouse Enter and Leave
+    eventMouseEnter: function (info) {
+      info.el.classList.add('hovered'); // Add a class on hover
+    },
+
+    eventMouseLeave: function (info) {
+      info.el.classList.remove('hovered'); // Remove the class on leave
+    },
+
     // ...
   });
 

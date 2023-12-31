@@ -21,7 +21,7 @@ exports.getScheduleEJS = async (req,res)=> {
     
 }
 
-//Function to render the Schedule page
+//Function to render the games page
 exports.getGamesEJS = async (req, res) => {
   try {
     const leagueId = req.params.leagueId;

@@ -1,6 +1,7 @@
 const League = require('../models/League');
 const Location = require('../models/Location');
 
+
 exports.getLocationEJS = async (req,res)=> {
     try{
         const leagues = await League.find();
@@ -34,9 +35,35 @@ exports.getLocationsEJS = async (req, res) => {
         return res.status(404).send('League not found');
       } 
   
-      res.render('locations.ejs', { league, locations });
+      res.render('gameLocations.ejs', { league, locations });
     } catch (error) {
       res.render('error.html', { error });
     }
   };
   
+
+  // Create a controller function to add a new location.
+exports.addlocation = async (req, res) => {
+  try {
+    const league = await League.findById(req.params.leagueId);
+    const { name, address, city, state, zipCode } = req.body;
+
+    // Perform validation and handle other logic.
+    console.log(req.body);
+    const location = new Location({
+      name,
+      address,
+      city,
+      state,
+      zipCode,
+      leagueName: league._id,
+      // Other game fields
+    });
+
+    await location.save();
+
+    res.redirect(`/locations/${league._id}/locations`);
+  } catch (error) {
+    res.status(500).json({ error: 'Error creating the game' });npm
+  }
+};
