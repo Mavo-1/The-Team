@@ -5,16 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-
   <link rel="stylesheet" href="/css/calendar.css">
   <title>Admin Dashboard</title>
 </head>
@@ -87,72 +79,36 @@
         </div>
       </div>
       <!-- Admin Calender -->
-      <div class="p-5">
-        <h2 class="mb-4">Full Calendar</h2>
-        <div class="card">
-          <div class="card-body p-0">
-            <div id="calendar"></div>
-          </div>
-        </div>
+
+      <!-- Calendar Container -->
+      <div class="container mx-auto mt-8 ">
+        <div id="calendar"></div>
       </div>
 
-      <!-- calendar modal -->
-      <div id="modal-view-event" class="modal modal-top fade calendar-modal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
-              <div class="event-body"></div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Event Modal -->
+      <div id="event-modal" class="modal fixed  w-full h-full top-0 left-0 hidden overflow-y-auto z-50">
+        <div class="modal-overlay absolute bg-gray-900 opacity-50"></div>
 
-      <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <form id="add-event">
-              <div class="modal-body">
-                <h4>Add Event Detail</h4>
-                <div class="form-group">
-                  <label>Event name</label>
-                  <input type="text" class="form-control" name="ename">
-                </div>
-                <div class="form-group">
-                  <label>Event Date</label>
-                  <input type='text' class="datetimepicker form-control" name="edate">
-                </div>
-                <div class="form-group">
-                  <label>Event Description</label>
-                  <textarea class="form-control" name="edesc"></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Event Color</label>
-                  <select class="form-control" name="ecolor">
-                    <option value="fc-bg-default">fc-bg-default</option>
-                    <option value="fc-bg-blue">fc-bg-blue</option>
-                    <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
-                    <option value="fc-bg-pinkred">fc-bg-pinkred</option>
-                    <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Event Icon</label>
-                  <select class="form-control" name="eicon">
-                    <option value="circle">circle</option>
-                    <option value="cog">cog</option>
-                    <option value="group">group</option>
-                    <option value="suitcase">suitcase</option>
-                    <option value="calendar">calendar</option>
-                  </select>
-                </div>
+        <div class="modal-container  w-full h-full flex items-center justify-center">
+          <div class="modal-content bg-gray-700 text-white w-96 p-4 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Add Event</h2>
+            <form id="add-event-form">
+              <div class="mb-4">
+                <label for="event-title" class="block text-white">Event Title</label>
+                <input type="text" id="event-title" name="title" class="form-input mt-1 block w-full text-black" required>
               </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+              <div class="mb-4">
+                <label for="event-date" class="block text-white">Event Date</label>
+                <input type="text" id="event-date" name="date" class="form-input mt-1 block w-full text-black" required>
+              </div>
+              <div class="mb-4">
+                <label for="event-description" class="block text-white">Event Description</label>
+                <textarea id="event-description" name="description" class="form-textarea mt-1 block w-full text-black" rows="3"
+                  required></textarea>
+              </div>
+              <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+                <button type="button" class="modal-close px-4 py-2 ml-2">Close</button>
               </div>
             </form>
           </div>
@@ -160,9 +116,15 @@
       </div>
     </div>
     <%- include('partials/footer') %>
-      
 
-      <script src="/javascript/calendar.js"></script>
+      <!-- Include jQuery and FullCalendar JS -->
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+         referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        referrerpolicy="no-referrer"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"
+        referrerpolicy="no-referrer"></script>
+      <script type="module" src="/javascript/calendar.js"></script>
 </body>
 
 </html>
