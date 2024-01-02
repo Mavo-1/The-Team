@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	flatpickr('#event-date', {
 		enableTime: true,
-		dateFormat: "Y-m-d H:i:S"
+		dateFormat: "Y-m-d H:i:S",
+		appendTo: document.getElementById('calendar-container') // Specify the container element
 	});
 	
 
