@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const locationSchema = new mongoose.Schema({
     name:{
@@ -20,6 +21,10 @@ const locationSchema = new mongoose.Schema({
     zipCode: {
         type:String,
         required: true,
+    },
+    leagueName: {
+        type: Schema.Types.ObjectId,
+        ref: 'League',
     },
 })
 

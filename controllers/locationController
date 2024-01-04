@@ -23,7 +23,7 @@ exports.getLocationsEJS = async (req, res) => {
         return res.status(400).send('Missing leagueId Parameter');
       }
   
-      // Assuming there's a property like "league" in your Game model
+      // Assuming there's a property like "league" in your location model
       const locations = await Location.find({ leagueName: leagueId });
   
       if (!locations) {
@@ -43,7 +43,7 @@ exports.getLocationsEJS = async (req, res) => {
   
 
   // Create a controller function to add a new location.
-exports.addlocation = async (req, res) => {
+exports.addLocation = async (req, res) => {
   try {
     const league = await League.findById(req.params.leagueId);
     const { name, address, city, state, zipCode } = req.body;
@@ -65,5 +65,41 @@ exports.addlocation = async (req, res) => {
     res.redirect(`/locations/${league._id}/locations`);
   } catch (error) {
     res.status(500).json({ error: 'Error creating the game' });npm
+  }
+};
+
+
+exports.deleteLocation = async (req, res) => {
+  try {
+    const locationId = req.params.locationId;
+
+    // Find the location by ID and remove it from the database
+    await Location.findByIdAndRemove(locationId);
+
+    // Redirect back to the locations page
+    res.redirect(`/locations/${req.params.leagueId}/locations`);
+  } catch (error) {
+    res.render('error.html', { error });
+  }
+};
+
+
+exports.updateLocation = async (req, res) => {
+  const locationId = req.params.id;
+  const { name, address, city, state, zipCode} = req.body;
+
+  try{
+   const updatedLocation = await Location.findByIdAndUpdate(
+     locationId,
+     {$set: { name, address, city, state, zipCode} },
+     { new: true}
+   );
+
+   //Respond with the updated game
+   res.json(updatedLocation);
+  }catch(error){
+   console.error('Error updating location:', error);
+   //Respond with an error status
+   res.status(500).send('Error updating location');
   }
 };

@@ -65,17 +65,13 @@
     borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)
   */
   .fc-state-default {
-    background-color: #f5f5f5;
-    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-color: #1a32b9;
+   
     background-repeat: repeat-x;
     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-    border-color: rgba(42, 131, 190, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    color: #333;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    border-color: rgba(47, 136, 196, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #000000;
+    text-shadow: 0 1px 1px rgb(23, 37, 84);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); }
   
   
@@ -87,11 +83,11 @@
   .fc-state-down,
   .fc-state-active,
   .fc-state-disabled {
-    color: #dadcdd;
+    color: #ffffff;
     background-color: #000000; }
   
   .fc-state-hover {
-    color: #062c7c;
+    color: #ffffff;
     text-decoration: none;
     background-position: 0 -15px;
     -webkit-transition: background-position 0.1s linear;
@@ -101,7 +97,7 @@
   
   .fc-state-down,
   .fc-state-active {
-    background-color: #13206e;
+    background-color: #172fb6;
     background-image: none;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05); }
   
@@ -835,7 +831,7 @@
   .fc-basic-view .fc-week-number,
   .fc-basic-view .fc-day-number {
     padding: 2px;
-    color: rgba(52,40,104,.8);
+    color: rgba(33, 128, 190, 0.8);
     font-size: 15px;
     font-weight: 400;
   }
