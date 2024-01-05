@@ -3892,7 +3892,7 @@ body.landing #main {
     /* Banner */
 
     #banner {
-        padding: 4em 0;
+        padding: 5em 3em 4em 3em;
     }
 
     #banner h2 {
@@ -4035,11 +4035,6 @@ body.landing #main {
         margin-top: 3em;
     }
 
-    /* Banner */
-
-    #banner {
-        padding: 5em 3em 4em 3em;
-    }
 
     /* Main */
 

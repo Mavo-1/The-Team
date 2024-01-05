@@ -97,18 +97,7 @@ a:hover {
   display: none; /* hide the default checkbox */
 }
 
-/* style the artificial checkbox */
-label span {
-  height: 13px;
-  width: 13px;
-  border: 2px solid #464d64;
-  border-radius: 2px;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  float: left;
-  left: 7.5%;
-}
+
 
 .btn1 {
   border:0;
