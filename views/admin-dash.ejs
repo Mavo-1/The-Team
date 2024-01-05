@@ -7,7 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <link rel="stylesheet" href="/css/calendar.css">
+  <script type="module" src="/javascript/playerChart.js"></script>
+
   <title>Admin Dashboard</title>
 </head>
 
@@ -78,6 +82,9 @@
 
         </div>
       </div>
+
+      <canvas id="playerChart" width="400" height="400"></canvas>
+
       <!-- Admin Calender -->
 
       <!-- Calendar Container -->
@@ -125,6 +132,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"
         referrerpolicy="no-referrer"></script>
       <script type="module" src="/javascript/calendar.js"></script>
+      <!-- Import the playerChart.js file -->
+
 </body>
 
 </html>

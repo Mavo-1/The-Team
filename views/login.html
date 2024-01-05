@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-yP9UfsaRRO3iKFRh3pJ6GAvVHlk2uekb9iGr+7z8aZL5F5JNq5ZbxW2B++xCaavdZRU1WNyOf9XTt8HPs0N6dQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/css/login.css">
-
     <title>Final Score Login</title>
 </head>
 <body>
@@ -20,12 +18,12 @@
                 <h4><a href="/">Final<span>Score</span></a></h4>
                 <h5>Sign in to your account</h5>
                 <input type="email" name="email" placeholder="Email" autocomplete="on">
-                <i class="fas fa-eye" id="eye" onclick="togglePasswordVisibility()"></i>
-                <input type="password" name="password" placeholder="Password" id="pwd" autocomplete="off">
+                <div class="password-container">
+                    <input type="password" name="password" id="pwd" placeholder="Password" autocomplete="off">
+                    <i class="material-icons" id="eye" onclick="togglePasswordVisibility()">visibility</i>
+                </div>
                 <label>
-                    
-                    
-                   
+                    <span></span>
                 </label>
                 <a href="#" class="forgetpass">Forget Password?</a>
                 <input type="submit" value="Sign in" class="btn1">
@@ -38,20 +36,18 @@
 
 <script>
   function togglePasswordVisibility() {
-      const passwordInput = document.getElementById("pwd");
-      const eyeIcon = document.getElementById("eye");
+    const passwordInput = document.getElementById("pwd");
+    const eyeIcon = document.getElementById("eye");
 
-      if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          eyeIcon.classList.remove("fa-eye");
-          eyeIcon.classList.add("fa-eye-slash");
-      } else {
-          passwordInput.type = "password";
-          eyeIcon.classList.remove("fa-eye-slash");
-          eyeIcon.classList.add("fa-eye");
-      }
-  }
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.add("visible");
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("visible");
+    }
+}
+
 </script>
 </body>
 </html>
-
