@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/css/calendar.css">
   <script type="module" src="/javascript/playerChart.js"></script>
 
@@ -39,94 +39,93 @@
         <!-- Dashboard content -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Leagues Box -->
-          <div class="flex items-center mt-4 bg-gray-700 p-4 rounded-lg shadow-md ">
-            <div class="mr-4">
-              <!-- League Icon -->
-              <i class="fas fa-trophy text-4xl text-yellow-500"></i>
+          <div
+            class="flex flex-col items-center justify-center bg-teal-400 bg-opacity-30 p-6 rounded-lg shadow-lg transition transform hover:scale-105">
+            <div class="flex items-center mb-1">
+              <i class="material-icons text-5xl text-blue-500 mr-1">emoji_events</i>
+              <h2 class="text-xl text-blue-500 font-semibold">Leagues</h2>
             </div>
-            <div>
-              <h2 class="text-2xl text-gray-100 font-semibold mb-2">Leagues</h2>
-              <p class="text-4xl font-bold text-yellow-500">
-                <%= leagueCount %>
-              </p>
-            </div>
+            <p class="text-3xl font-bold text-blue-500">
+              <%= leagueCount %>
+            </p>
           </div>
+
+
 
           <!-- Players Box -->
-          <div class="flex items-center mt-4 bg-gray-700 p-4 rounded-lg shadow-md">
-            <div class="mr-4">
-              <!-- Player Icon -->
-              <i class="fa-solid fa-person-running text-4xl text-green-500"></i>
-            </div>
-            <div>
-              <h2 class="text-2xl text-gray-100 font-semibold mb-2">Players</h2>
-              <p class="text-4xl font-bold text-green-500">
-                <%= playerCount %>
-              </p>
-            </div>
+          <div
+            class="flex flex-col items-center justify-center bg-teal-400 bg-opacity-30 p-6 rounded-lg shadow-lg transition transform hover:scale-105">
+            <div class="flex items-center mb-1">
+            <i class="material-icons text-5xl text-green-500 mr-1 ">groups</i>
+            <h2 class="text-xl text-green-500 font-semibold">Players</h2>
           </div>
+          <p class="text-3xl font-bold text-green-500">
+            <%= playerCount %>
+          </p>
+        </div>
 
-          <!-- Teams Box -->
-          <div class="flex items-center mt-4 bg-gray-700 p-4 rounded-lg shadow-md">
-            <div class="mr-4">
-              <!-- Team Icon -->
-              <i class="fas fa-users text-4xl text-blue-500"></i>
-            </div>
-            <div>
-              <h2 class="text-2xl text-gray-100 font-semibold mb-2">Teams</h2>
-              <p class="text-4xl font-bold text-blue-500">
-                <%= teamCount %>
-              </p>
-            </div>
+        <!-- Teams Box -->
+        <div
+          class="flex flex-col items-center justify-center bg-teal-500 bg-opacity-30 p-6 rounded-lg shadow-lg transition transform hover:scale-105">
+          <div class="flex items-center mb-1">
+
+            <i class="material-icons text-5xl text-orange-500 mr-1">diversity_3</i>
+            <h2 class="text-xl text-orange-500 font-semibold">Teams</h2>
+
+
           </div>
-
+          <p class="text-3xl font-bold text-orange-500">
+            <%= teamCount %>
+          </p>
         </div>
       </div>
+    </div>
 
-      <canvas id="playerChart" width="400" height="400"></canvas>
 
-      <!-- Admin Calender -->
 
-      <!-- Calendar Container -->
-      <div class="container mx-auto mt-8 ">
-        <div id="calendar"></div>
-      </div>
+    <canvas id="playerChart" width="400" height="400"></canvas>
 
-      <!-- Event Modal -->
-      <div id="event-modal" class="modal fixed  w-full h-full top-0 left-0 hidden overflow-y-auto z-50">
-        <div class="modal-overlay absolute bg-gray-900 opacity-50"></div>
+    <!-- Admin Calender -->
 
-        <div class="modal-container fixed  w-full h-full flex items-center justify-center">
-          <div class="modal-content bg-gray-700 text-white w-96 p-4 rounded shadow">
-            <h2 class="text-xl text-white font-bold mb-4">Add Event</h2>
-            <form id="add-event-form">
-              <div class="mb-4">
-                <label for="event-title" class="block text-white">Event Title</label>
-                <input type="text" id="event-title" name="title" class="form-input mt-1 block w-full text-black" required>
-              </div>
-              <div class="mb-4">
-                <label for="event-date" class="block text-white">Event Date</label>
-                <input type="text" id="event-date" name="date" class="form-input mt-1 block w-full text-black" required>
-              </div>
-              <div class="mb-4">
-                <label for="event-description" class="block text-white">Event Description</label>
-                <textarea id="event-description" name="description" class="form-textarea mt-1 block w-full text-black" rows="3"
-                  required></textarea>
-              </div>
-              <div class="flex justify-end">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                <button type="button" class="modal-close px-4 py-2 ml-2">Close</button>
-              </div>
-            </form>
-          </div>
+    <!-- Calendar Container -->
+    <div class="container mx-auto mt-8 ">
+      <div id="calendar"></div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="event-modal" class="modal fixed  w-full h-full top-0 left-0 hidden overflow-y-auto z-50">
+      <div class="modal-overlay absolute bg-gray-900 opacity-50"></div>
+
+      <div class="modal-container fixed  w-full h-full flex items-center justify-center">
+        <div class="modal-content bg-gray-700 text-white w-96 p-4 rounded shadow">
+          <h2 class="text-xl text-white font-bold mb-4">Add Event</h2>
+          <form id="add-event-form">
+            <div class="mb-4">
+              <label for="event-title" class="block text-white">Event Title</label>
+              <input type="text" id="event-title" name="title" class="form-input mt-1 block w-full text-black" required>
+            </div>
+            <div class="mb-4">
+              <label for="event-date" class="block text-white">Event Date</label>
+              <input type="text" id="event-date" name="date" class="form-input mt-1 block w-full text-black" required>
+            </div>
+            <div class="mb-4">
+              <label for="event-description" class="block text-white">Event Description</label>
+              <textarea id="event-description" name="description" class="form-textarea mt-1 block w-full text-black"
+                rows="3" required></textarea>
+            </div>
+            <div class="flex justify-end">
+              <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+              <button type="button" class="modal-close px-4 py-2 ml-2">Close</button>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
     </div>
     <%- include('partials/footer') %>
 
       <!-- Include jQuery and FullCalendar JS -->
-      <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-         referrerpolicy="no-referrer"></script>
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js" referrerpolicy="no-referrer"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         referrerpolicy="no-referrer"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"
