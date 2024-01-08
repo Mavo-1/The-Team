@@ -196,8 +196,8 @@ body,
 input,
 select,
 textarea {
-    color: #777;
-    font-family: "Source Sans Pro", sans-serif;
+    color: #646464;
+    font-family: "Roboto", sans-serif;
     font-size: 16pt;
     font-weight: 300;
     line-height: 1.65em;
@@ -2115,6 +2115,7 @@ code {
 section.special,
 article.special {
     text-align: center;
+    font-family: 'Roboto',sans-serif;
 }
 
 header h2 {
@@ -2122,10 +2123,10 @@ header h2 {
 }
 
 header p {
-    color: #999;
+    color: #4e4e4e;
     position: relative;
     margin: 0 0 1.5em 0;
-    font-style: italic;
+    font-family: 'Roboto',sans-serif;
 }
 
 header h2+p {
@@ -3304,7 +3305,7 @@ body.landing #page-wrapper {
 }
 
 #banner h2 {
-    font-family: 'Your Preferred Font', sans-serif; /* Add your preferred font */
+    font-family: 'Roboto', sans-serif; /* Add your preferred font */
     font-size: 3.5em;
     line-height: 1em;
     margin: 2em 0 0.5em 0; /* Adjusted margin-top to lower the h2 */
@@ -3695,7 +3696,7 @@ body.landing #main {
         text-rendering: auto;
         line-height: 1;
         text-transform: none !important;
-        font-family: 'Font Awesome 5 Free';
+        font-family: 'Roboto';
         font-weight: 900;
     }
 
