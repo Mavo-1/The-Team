@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,46 +9,96 @@
     <link rel="stylesheet" href="/css/login.css">
     <title>Final Score Login</title>
 </head>
+
 <body>
-    
-  <body id="particles-js"></body>
+
+    <body id="particles-js"></body>
     <div class="animated bounceInDown">
         <div class="container">
             <span class="error animated tada" id="msg"></span>
             <form name="form1" class="box" action="/login" method="POST">
                 <h4><a href="/">Final<span>Score</span></a></h4>
                 <h5>Sign in to your account</h5>
-                <input type="email" name="email" placeholder="Email" autocomplete="on">
+                <input id="email" type="email" name="email" placeholder="Email" autocomplete="on">
+                <style>
+                    #email {
+                        padding-right: 1em;
+                        /* Adjust this value to leave space for the icon */
+                        border: 1px solid #ccc;
+                        /* Add border for better appearance */
+                        border-radius: 4px;
+                        /* Optional: Add border-radius for rounded corners */
+                    }
+
+                    .password-container {
+                        position: relative;
+                        display: inline-block;
+                    }
+
+                    #pwd {
+                        padding-right: 1em;
+                        /* Adjust this value to leave space for the icon */
+                        border: 1px solid #ccc;
+                        /* Add border for better appearance */
+                        border-radius: 4px;
+                        /* Optional: Add border-radius for rounded corners */
+                    }
+
+                    #eye {
+                        position: absolute;
+                        right: 8px;
+                        /* Adjust this value to position the icon */
+                        top: 50%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        user-select: none;
+                        /* Prevent text selection */
+                    }
+                </style>
                 <div class="password-container">
                     <input type="password" name="password" id="pwd" placeholder="Password" autocomplete="off">
                     <i class="material-icons" id="eye" onclick="togglePasswordVisibility()">visibility</i>
-                </div>
-                <label>
-                    <span></span>
-                </label>
+                  </div>
+                  
+                  <script>
+                    function togglePasswordVisibility() {
+                      const passwordInput = document.getElementById('pwd');
+                      const eyeIcon = document.getElementById('eye');
+                  
+                      if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        eyeIcon.textContent = 'visibility_off'; // Change icon to hide
+                      } else {
+                        passwordInput.type = 'password';
+                        eyeIcon.textContent = 'visibility'; // Change icon to show
+                      }
+                    }
+                  </script>
+
                 <a href="#" class="forgetpass">Forget Password?</a>
                 <input type="submit" value="Sign in" class="btn1">
             </form>
             <a href="/signup" class="dnthave">Don’t have an account? Sign up today!</a>
-        </div> 
+        </div>
         <div class="footer">
         </div>
-    </div>  
+    </div>
 
-<script>
-  function togglePasswordVisibility() {
-    const passwordInput = document.getElementById("pwd");
-    const eyeIcon = document.getElementById("eye");
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("pwd");
+            const eyeIcon = document.getElementById("eye");
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.classList.add("visible");
-    } else {
-        passwordInput.type = "password";
-        eyeIcon.classList.remove("visible");
-    }
-}
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.add("visible");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("visible");
+            }
+        }
 
-</script>
+    </script>
 </body>
+
 </html>
