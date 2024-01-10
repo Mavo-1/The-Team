@@ -40,30 +40,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% leagues.forEach(league=> { %>
-                    <tr class="capitalize hover:bg-gray-200 ">
-                        <td class="px-4 py-2">
-                            <%= league.leagueName %>
-                        </td>
-                        <td class="px-4 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                            <%= league.sport %>
-                        </td>
-                        <td class="px-4 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                            <%= league.startDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %>
-                        </td>
-                        <td class="px-4 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
-                            <%= league.endDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %>
-                        </td>
-                        <td class="flex items-center px-4 py-2 text-blue-900 border-l border-gray-300">
-                            <a href="/locations/<%= league._id %>/locations"
-                                class="flex items-center text-indigo-600 hover:text-indigo-900">
-                                <span class="material-icons mr-1 text-xl">location_on</span> View Locations
-                            </a>
-                        </td>
-                    </tr>
+                    <% leagues.forEach(league => { %>
+                        <tr class="capitalize hover:bg-gray-200 ">
+                            <td class="px-4 py-2">
+                                <%= league.leagueName %>
+                            </td>
+                            <td class="px-4 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                <%= league.sport %>
+                            </td>
+                            <td class="px-4 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                <%= league.startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
+                            </td>
+                            <td class="px-4 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                                <%= league.endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) %>
+                            </td>
+                            <td class="flex items-center px-2 py-2 text-blue-900 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis pr-1">
+                                <a href="/locations/<%= league._id %>/locations"
+                                    class="flex items-center text-indigo-600 hover:text-indigo-900">
+                                    <span class="material-icons mr-1 text-xl">location_on</span> View Locations
+                                </a>
+                            </td>
+                        </tr>
                     <% }); %>
                 </tbody>
             </table>
+            
 
         </main>
     </div>
