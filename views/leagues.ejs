@@ -51,11 +51,11 @@
       <div class="flex justify-between mt-4">
         <form id="deleteForm_<%= league._id %>" data-id="<%= league._id %>">
           <input type="hidden" name="_method" value="DELETE" />
-          <button type="submit" class="delete-button text-red-600 hover:text-red-900">
+          <button type="submit" class="flex items-center delete-button text-red-600 hover:text-red-900">
             <i class="material-icons">delete</i> Delete
           </button>
         </form>
-        <a href="/leagues/<%= league._id %>/teams" class="text-indigo-600 hover:text-indigo-900">
+        <a href="/leagues/<%= league._id %>/teams" class="flex items-center text-indigo-600 hover:text-indigo-900">
           <i class="material-icons">group</i> View Teams
         </a>
       </div>
