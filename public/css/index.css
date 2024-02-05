@@ -202,6 +202,7 @@ textarea {
     font-weight: 300;
     line-height: 1.65em;
     letter-spacing: -0.015em;
+    text-decoration: none;
 }
 
 a {
@@ -214,8 +215,11 @@ a {
     text-decoration: none;
 }
 
+
+
 a:hover {
     border-bottom-color: transparent;
+    text-decoration: none;
 }
 
 strong,
@@ -3047,6 +3051,7 @@ body.landing #page-wrapper {
     top: 0;
     width: 100%;
     z-index: 10000;
+    
 }
 
 #header h1 {
@@ -3072,6 +3077,7 @@ body.landing #page-wrapper {
 
 #header a:hover {
     color: #5779ff; 
+    text-decoration: none;
 }
 
 #header nav {
@@ -4050,4 +4056,14 @@ body.landing #main {
         padding: 2.5em 1em 3em 1em;
     }
 
+}
+
+
+#navi{
+    background-color: #5779ff;
+
+}
+
+#navi a {
+    text-decoration: none !important;
 }
