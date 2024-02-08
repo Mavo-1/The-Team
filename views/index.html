@@ -5,20 +5,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Final Score</title>
-    
+    <link rel="stylesheet" href="/css/index.css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/index.css" />
+    
     
     
 </head>
-<%- include('partials/landing-header') %>
-<body class="landing is-preload ">
-    
-    <div id="page-wrapper" class="min-h-screen flex flex-col">
 
-       
-        
+<body class="bg-gray-100">
+
+    
+
+       <header >
+            <nav id="navi" class="py-4 no-underline" >
+                <div class="container mx-auto flex items-center justify-between no-underline ">
+                    <div class="flex items-center no-underline">
+                        <a href="/dashboard" class="text-white mr-4 flex items-center group no-underline" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>
+                            <!-- Replace with your image or icon -->
+                            <span class="text-white material-icons text-base font-semibold group-hover:text-blue-300">sports_soccer</span>
+                            <span class="text-white text-base font-semibold group-hover:text-blue-300 ">Dashboard</span>
+                        </a>
+                        <a href="#features" class="text-white text-base font-semibold hover:text-blue-300" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>Features</a>
+                        <!-- <a href="/standings" class="text-base font-semibold hover:text-blue-300 ml-4" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>Standings</a> -->
+                        <a href="#about" class="text-white text-base font-semibold hover:text-blue-300 ml-4" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>About</a>
+                        <a href="/locations" class="text-white text-base font-semibold hover:text-blue-300 ml-4" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>The Team</a>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-lg text-white" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>person</span>
+                        <a href="/login" class="no-underline text-white text-base font-semibold hover:text-blue-300 ml-2" style='text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);'>Login</a>
+                    </div>
+                </div>
+          
+        </header>
 
         <!-- Banner -->
         <section id="banner" class="bg-gray-800 text-white pb-16 text-center py-16">
@@ -146,10 +165,10 @@
             </ul>
         </footer>
 
-    </div>
+    
 
 
-
+    <script src="https://cdn.tailwindcss.com"></script>
 </body>
 
 </html>

@@ -215,7 +215,13 @@ a {
     text-decoration: none;
 }
 
+#navi {
+    background-color: #5779ff;
+}
 
+#navi a {
+    text-decoration: none;
+}
 
 a:hover {
     border-bottom-color: transparent;
