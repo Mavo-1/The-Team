@@ -3001,7 +3001,6 @@ body.landing #page-wrapper {
 /* Banner */
 #banner {
     background-attachment: fixed;
-    background-color: #666;
     background-image: url("/images/age-appropriate-sports-for-kids.webp");
     background-position: center center;
     background-repeat: no-repeat;
@@ -3016,12 +3015,12 @@ body.landing #page-wrapper {
     margin-bottom: 0;
 }
 
+#banner h1,
 #banner h2,
-#banner h3,
-#banner h4,
 #banner h5,
 #banner h6 {
     color: #fff;
+    text-align: left;
 }
 
 #banner h2 {
@@ -3030,18 +3029,21 @@ body.landing #page-wrapper {
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     color: white;
-    text-align: center; /* Center-align the heading */
     margin-top: 1.5em; /* Adjusted top margin */
     letter-spacing: 2px; /* Increased letter spacing for emphasis */
     text-transform: uppercase; /* Applied uppercase text transformation */
 }
 
 
+
+
 #banner p {
-    font-size: 2.25em;
+    font-size: 1em;
+    color: white;
     margin-bottom: 1.75em;
     font-weight: bold; /* Adjust font weight based on your design preference */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a subtle text shadow for better visibility */
+    text-align: left;
 }
 
 #banner input[type="submit"],
