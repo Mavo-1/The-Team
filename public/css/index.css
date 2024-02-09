@@ -212,6 +212,19 @@ textarea {
     text-decoration: none;
 }
 
+#navi h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #5c6bc0; 
+    margin-right: 14px;
+    font-size: larger;
+  }
+  
+  #navi h4 span {
+    color: #dfdeee;
+    font-weight: lighter;
+  }
+  
+
 a:hover {
     border-bottom-color: transparent;
     text-decoration: none;
@@ -3007,7 +3020,6 @@ body.landing #page-wrapper {
     background-size: cover;
     color: #fff;
     padding: 5em 0 5em 0;
-    /* Adjusted padding for better visibility */
     text-align: center;
 }
 

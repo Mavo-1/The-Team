@@ -1,5 +1,5 @@
 // Array of different sports teams
-const sportsTeams = ['soccer team', 'football team', 'baseball team'];
+const sportsTeams = ['soccer team.', 'football team.', 'baseball team.', 'lacross team.', 'softball team.', 'volleyball team.', 'basketball team.'];
 let index = 0;
 
 // Function to change the text of the span element
