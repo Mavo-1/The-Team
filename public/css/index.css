@@ -3013,12 +3013,6 @@ body.landing #page-wrapper {
 
 /* Banner */
 #banner {
-    background-attachment: fixed;
-    background-image: url("/images/age-appropriate-sports-for-kids.webp");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #fff;
     padding: 5em 0 5em 0;
     text-align: center;
 }
