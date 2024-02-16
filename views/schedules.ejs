@@ -22,27 +22,47 @@
                     Search
                 </button>
             </div>
-
-            <h1 class="mb-4 text-3xl font-medium text-center text-white">
-                Game Schedule
-            </h1>
-
-            <div class="container mx-auto">
-                <% leagues.forEach(league=> { %>
-                <div class="bg-white shadow-lg rounded-lg p-4 mb-4">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-2"><%= league.leagueName %></h2>
-                    <p class="text-gray-600"><span class="font-semibold">Sport:</span> <%= league.sport %></p>
-                    <p class="text-gray-600"><span class="font-semibold">Start Date:</span> <%= league.startDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %></p>
-                    <p class="text-gray-600"><span class="font-semibold">End Date:</span> <%= league.endDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %></p>
-                    <a href="/schedules/<%= league._id %>/games" class="block mt-4 text-center bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
-                        View Games
-                    </a>
-                </div>
-                <% }); %>
+            <div class=" mb-8">
+                <h1 class="text-3xl font-semibold text-white">League Schedules</h1>
+                <p class="text-lg text-gray-300 mt-2">Browse through the schedules of various leagues to keep upcoming games updated.</p>
             </div>
+           
 
-            
-            
+            <table class="table-auto mx-auto w-full bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
+                <thead>
+                    <tr class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-blue-950 bg-blue-950 rounded-t-lg">
+                        <th class="px-4 py-2">League Name</th>
+                        <th class="px-4 py-2">Sport</th>
+                        <th class="px-4 py-2">Start Date</th>
+                        <th class="px-4 py-2">End Date</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% leagues.forEach(league=> { %>
+                    <tr class="capitalize hover:bg-gray-200">
+                        <td class="px-4 py-2">
+                            <%= league.leagueName %>
+                        </td>
+                        <td class="px-4 py-2  border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                            <%= league.sport %>
+                        </td>
+                        <td class="px-4 py-2  border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                            <%= league.startDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %>
+                        </td>
+                        <td class="px-4 py-2 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                            <%= league.endDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %>
+                        </td>
+                        <td class="flex items-center px-4 py-2 text-blue-900 border-l border-gray-300">
+                            <a href="/schedules/<%= league._id %>/games"
+                                class="flex items-center text-indigo-600 hover:text-indigo-900">
+                                <span class="material-icons mr-1 text-xl">calendar_today</span> View Games
+                            </a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
 
         </main>
     </div>
