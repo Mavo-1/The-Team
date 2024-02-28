@@ -4,8 +4,6 @@
 
 /* Reset */
 
-/* Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain) */
-
 html,
 body,
 div,
@@ -3047,7 +3045,7 @@ body.landing #page-wrapper {
     font-size: 1em;
     color: white;
     margin-bottom: 1.75em;
-    font-weight: bold; /* Adjust font weight based on your design preference */
+    font-weight: bold; /* Adjust font weight based on  design preference */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a subtle text shadow for better visibility */
     text-align: left;
 }
