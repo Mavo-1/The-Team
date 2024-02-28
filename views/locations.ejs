@@ -14,7 +14,7 @@
     <%- include('partials/header') %>
 
         <div class="min-h-screen">
-            <main>
+            <main class="container mx-auto mt-8">
 
                 <div class="flex justify-end p-4 items-center space-x-2">
                     <input type="text" id="search" name="searchLocations" placeholder="location, date, league,team" class="border p-2 rounded-lg" />
@@ -24,12 +24,13 @@
                     </button>
                 </div>
 
-                <h1 class="mb-4 text-3xl font-medium text-center mt-4 text-white">
-                    Locations
-                </h1>
+                <div class=" mb-8">
+                    <h1 class="text-3xl font-semibold text-white">League Locations</h1>
+                    <p class="text-lg text-gray-300 mt-2">Browse through the locations of each league and make sure everyone shows up at the right place.</p>
+                </div>
 
                 <table
-                    class="table-auto mx-auto w-3/4 bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
+                    class="table-auto mx-auto w-full bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
                     <thead>
                         <tr
                             class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-blue-950 bg-blue-950 rounded-t-lg">

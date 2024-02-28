@@ -40,9 +40,43 @@
                 </div>
                 <% }); %>
             </div>
+           
 
-            
-            
+            <table class="table-auto mx-auto w-full bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
+                <thead>
+                    <tr class="py-4 my-4 text-left font-medium text-white tracking-wider border-b border-blue-950 bg-blue-950 rounded-t-lg">
+                        <th class="px-4 py-2">League Name</th>
+                        <th class="px-4 py-2">Sport</th>
+                        <th class="px-4 py-2">Start Date</th>
+                        <th class="px-4 py-2">End Date</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% leagues.forEach(league=> { %>
+                    <tr class="capitalize hover:bg-gray-200">
+                        <td class="px-4 py-2">
+                            <%= league.leagueName %>
+                        </td>
+                        <td class="px-4 py-2  border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                            <%= league.sport %>
+                        </td>
+                        <td class="px-4 py-2  border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                            <%= league.startDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %>
+                        </td>
+                        <td class="px-4 py-2 border-l border-gray-300 whitespace-nowrap max-w-xs overflow-ellipsis">
+                            <%= league.endDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %>
+                        </td>
+                        <td class="flex items-center px-4 py-2 text-blue-900 border-l border-gray-300">
+                            <a href="/schedules/<%= league._id %>/games"
+                                class="flex items-center text-indigo-600 hover:text-indigo-900">
+                                <span class="material-icons mr-1 text-xl">calendar_today</span> View Games
+                            </a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
 
         </main>
     </div>

@@ -553,7 +553,7 @@
     font-size: 1em;
     text-align: center;
     overflow: hidden;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Roboto", sans-serif;
     /* don't allow browser text-selection */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -1096,7 +1096,7 @@
     overflow: hidden;
     line-height: 8px;
     font-size: 11px;
-    font-family: monospace;
+    font-family: "Roboto", sans-serif;
     text-align: center;
     cursor: s-resize; }
   
@@ -1259,7 +1259,7 @@
       z-index: 123456;
   }
   body{
-    font-family: 'Nunito', sans-serif;
+    font-family: "Roboto", sans-serif;
     background: #F3F5F9;
   }
   .card{
@@ -1269,10 +1269,10 @@
   h2{
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 38px;
     text-align: center;
     letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #ffffff;
     margin-bottom: 20px;
   }
@@ -1281,7 +1281,7 @@
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 2.5px;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Roboto", sans-serif;
     box-shadow: none !important;
     border: 0;
     padding: 10px 20px !important;
@@ -1308,7 +1308,7 @@
     font-weight: 700;
     font-size: 18px;
     letter-spacing: 1px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #002147;
     margin-bottom: 20px;
   }
