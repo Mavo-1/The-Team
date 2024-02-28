@@ -137,12 +137,11 @@
 
 
         <!-- Add Game Form (Initially hidden) -->
-        <div id="addGameModal"
-          class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div class="bg-white p-8 rounded-lg" style="max-width: 600px">
+        <div id="addGameModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 bg-opacity-75">
+          <div class="bg-white p-8 rounded-lg border border-gray-300 shadow-lg" style="width: 400px;">
            
             <form id="addGameForm" action="/schedules/<%= league._id %>/games"  method="POST">
-              <h2 class="text-xl font-semibold mb-2">Add Game</h2>
+              <h2 class="flex text-xl text-blue-600 font-semibold mb-2 flex justify-center">Add Game</h2>
               <div class="mb-4">
                 <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
                 <input type="date" id="date" name="date" class="w-full border rounded py-2 px-3" required />
