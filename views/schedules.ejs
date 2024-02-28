@@ -23,23 +23,12 @@
                 </button>
             </div>
 
-            <h1 class="mb-4 text-3xl font-medium text-center text-white">
-                Game Schedule
-            </h1>
-
-            <div class="capitalize ontainer mx-auto">
-                <% leagues.forEach(league=> { %>
-                <div class="bg-white shadow-lg rounded-lg p-4 mb-4">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-2"><%= league.leagueName %></h2>
-                    <p class="text-gray-600"><span class="font-semibold">Sport:</span> <%= league.sport %></p>
-                    <p class="text-gray-600"><span class="font-semibold">Start Date:</span> <%= league.startDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %></p>
-                    <p class="text-gray-600"><span class="font-semibold">End Date:</span> <%= league.endDate.toLocaleDateString('en-US', { month: 'short' , day: 'numeric' , year: 'numeric' }) %></p>
-                    <a href="/schedules/<%= league._id %>/games" class="block mt-4 text-center bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
-                        View Games
-                    </a>
-                </div>
-                <% }); %>
+            <div class=" mb-8">
+                <h1 class="text-3xl font-semibold text-white">Schedule</h1>
+                <p class="text-lg text-gray-300 mt-2">Browse through the schedules and view games from each league.</p>
             </div>
+
+            
            
 
             <table class="table-auto mx-auto w-full bg-white shadow-lg rounded-lg ring ring-blue-950 ring-opacity-43">
