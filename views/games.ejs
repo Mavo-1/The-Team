@@ -8,14 +8,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-400 font-sans min-h-screen">
+<body class="bg-gray-500 font-sans min-h-screen">
   <%- include('partials/header') %>
     <!-- Search Bar to Filter Games -->
     <!-- Debugging output -->
 <%= console.log('League ID:', league._id) %>
     <form action="/schedules/search/games" method="GET">
     <div class="flex justify-end p-4 items-center space-x-2">
-      <input type="text" name='search' id="search" placeholder="location,date,league,team" class="border p-2 rounded-lg" />
+      <input type="text" name='search' id="search" placeholder="" class="border p-2 rounded-lg" />
       <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded">
         Search
       </button>
