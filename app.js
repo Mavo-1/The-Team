@@ -1,3 +1,4 @@
+
 const express = require('express')
 const methodOverride= require('method-override')
 const app = express()
@@ -19,7 +20,7 @@ dotenv.config({path:'./config/.env'})
 //Passport config
 require('./config/passport')(passport)
 
-connectDB()
+
 
 app.engine('html', require('ejs').renderFile); // This line renders HTML files using EJS
 app.set('view engine', 'html'); // Set EJS as the view engine
@@ -83,7 +84,13 @@ app.use((err, req, res, next) => {
 //port
 const PORT = process.env.PORT || 4141
 
-app.listen(PORT, 
+
+
+
+connectDB().then(()=> {
+  app.listen(PORT, 
     console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}. `)
 )
+})
+
 
