@@ -82,11 +82,11 @@ app.use((err, req, res, next) => {
 
 
 //port
-const PORT = process.env.PORT || 4141
+const PORT = process.env.PORT || 3000
 
 
 
-
+//Connects to db before listening
 connectDB().then(()=> {
   app.listen(PORT, 
     console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}. `)
