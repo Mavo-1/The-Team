@@ -4,6 +4,7 @@
 I created Final Score for people who were tired of managing sports leagues, teams, and schedules manually or relying on clunky spreadsheets? This is a full-stack  project designed to streamline the process for you!
 
 With Final Score, you can:
+
 🔹 Create and manage multiple leagues effortlessly
 
 🔹 Add teams, players, and locations with ease
