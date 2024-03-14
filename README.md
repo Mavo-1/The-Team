@@ -1,7 +1,7 @@
 # Final-Score Introduction
 🏆 Excited to introduce Final Score - My Solution for Organizing Sports Leagues! 🏀🏈⚽️
 
-I created Final Score for people who were tired of managing sports leagues, teams, and schedules manually or relying on clunky spreadsheets? This is a full-stack MERN project designed to streamline the process for you!
+I created Final Score for people who were tired of managing sports leagues, teams, and schedules manually or relying on clunky spreadsheets? This is a full-stack  project designed to streamline the process for you!
 
 With Final Score, you can:
 🔹 Create and manage multiple leagues effortlessly
